@@ -13,6 +13,7 @@ const optionsContainer = document.getElementById('options-container');
 const currentQuestionEl = document.getElementById('current-question');
 const totalQuestionsEl = document.getElementById('total-questions');
 const currentScoreEl = document.getElementById('current-score');
+const progressBar = document.getElementById('progress-bar');
 
 // 答案与解析相关元素
 const answerExplanation = document.getElementById('answer-explanation');
@@ -25,6 +26,11 @@ const finalScoreEl = document.getElementById('final-score');
 const totalScoreEl = document.getElementById('total-score');
 const maxPossibleScoreEl = document.getElementById('max-possible-score');
 
+// 开始屏幕信息元素
+const infoTotalQuestions = document.getElementById('info-total-questions');
+const infoPointsPerQuestion = document.getElementById('info-points-per-question');
+const infoMaxScore = document.getElementById('info-max-score');
+
 // 全局变量
 let currentQuestionIndex = 0;
 let userAnswers = [];
@@ -36,13 +42,18 @@ function init() {
     // 设置题目总数
     const totalQuestions = questions.length;
     totalQuestionsEl.textContent = totalQuestions;
+    infoTotalQuestions.textContent = totalQuestions;
     
     // 计算最大可能得分
     questions.forEach(q => {
         maxPossibleScore += q.points;
     });
     
+    infoMaxScore.textContent = maxPossibleScore;
     maxPossibleScoreEl.textContent = maxPossibleScore;
+    
+    // 设置每题分值（取第一题的分值作为示例）
+    infoPointsPerQuestion.textContent = questions[0].points;
     
     // 初始化用户答案数组
     userAnswers = new Array(totalQuestions).fill(null);
@@ -53,6 +64,9 @@ function init() {
     nextBtn.addEventListener('click', showNextQuestion);
     submitBtn.addEventListener('click', submitAnswer);
     restartBtn.addEventListener('click', restartQuiz);
+    
+    // 更新进度条
+    updateProgressBar();
 }
 
 // 开始测验
@@ -78,7 +92,10 @@ function showQuestion(index) {
     question.options.forEach((option, i) => {
         const optionElement = document.createElement('div');
         optionElement.className = 'option';
-        optionElement.textContent = `${String.fromCharCode(65 + i)}. ${option}`;
+        optionElement.innerHTML = `
+            <span class="option-letter">${String.fromCharCode(65 + i)}</span>
+            <span>${option}</span>
+        `;
         optionElement.dataset.index = i;
         
         // 如果用户已经选择了这个选项，添加选中样式
@@ -98,7 +115,7 @@ function showQuestion(index) {
 function selectOption(optionIndex) {
     // 如果已经提交了答案，不允许修改
     if (userAnswers[currentQuestionIndex] !== null && 
-        document.getElementById('answer-explanation').classList.contains('hidden') === false) {
+        !answerExplanation.classList.contains('hidden')) {
         return;
     }
     
@@ -136,6 +153,7 @@ function submitAnswer() {
         } else if (index === userAnswerIndex && !isCorrect) {
             option.classList.add('incorrect');
         }
+        option.style.pointerEvents = 'none'; // 禁用点击
     });
     
     // 更新得分
@@ -151,7 +169,7 @@ function submitAnswer() {
     updateNavigationButtons();
 }
 
-// 显示答案与解析 [2,4](@ref)
+// 显示答案与解析 
 function showAnswerExplanation(isCorrect, question) {
     // 显示答案与解析区域
     answerExplanation.classList.remove('hidden');
@@ -228,6 +246,16 @@ function showResults() {
 function updateProgress() {
     currentQuestionEl.textContent = currentQuestionIndex + 1;
     currentScoreEl.textContent = score;
+    updateProgressBar();
+}
+
+// 更新进度条
+function updateProgressBar() {
+    const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+    const progressElement = document.querySelector('.progress');
+    if (progressElement) {
+        progressElement.style.width = `${progress}%`;
+    }
 }
 
 // 重新开始测验
@@ -240,6 +268,7 @@ function restartQuiz() {
     startScreen.classList.add('active');
     
     updateProgress();
+    updateNavigationButtons();
 }
 
 // 初始化应用
