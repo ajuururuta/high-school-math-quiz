@@ -53,7 +53,7 @@ const questions = [
         ],
         correctIndex: 2,
         points: 5,
-        explanation: "n点截线：Cn⁰  + Cn¹；n线截面：Cn⁰ + Cn¹。在此不详细证明。"
+        explanation: "n点截线：Cn⁰ + Cn¹；n线截面：Cn⁰ + Cn¹ + Cn²。在此不详细证明。"
     },
     {
         question: "4个平面切割1个三维空间，最多将该空间切割为几个部分",
@@ -65,7 +65,7 @@ const questions = [
         ],
         correctIndex: 2,
         points: 0,
-        explanation: "由上题找规律：n面截三维空间得到 (Cn⁰ + Cn¹ + Cn³) 个部分"
+        explanation: "由上题找规律：n面截三维空间得到 (Cn⁰ + Cn¹ + + Cn² + Cn³) 个部分"
     },
     {
         question: "平面内的两条直线不可以重合，空间内的两条直线不可以重合。（有争议，不计入总分）",
