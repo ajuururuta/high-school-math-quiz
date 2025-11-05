@@ -2,7 +2,10 @@
 const questions = [
     {
         question: "除形如 x/a + y/a = 1 (a≠0) 的直线方程以外的直线方程x、y轴上的截距不相同。",
-        options: ["正确", "错误"],
+        options: [
+            "正确", 
+            "错误"
+        ],
         correctIndex: 1,
         points: 5,
         explanation: "直线方程 y = kx (k≠0) 在x、y轴上的截距均为0"    },
@@ -29,83 +32,49 @@ const questions = [
         correctIndex: 1,
         points: 5,
         explanation: "《人教B版高中数学必修第二册》§5.2 数学探究活动课“由编号样本估计总数及其模拟”问题的数学语言描述；无论是教材使用的n个区间的平均长度，还是一致最小方差无偏估计，它们的实质都可以分割区间思想理解。"
-
     },
     {
         question: "直线ɭ: Ax + By + C = 0, 直线ɭ和直线ɭ'关于点(x₀,y₀)对称，直线ɭ'的方程为 A(2x₀-x) + B(2y₀-y) + C = 0",
         options: [
             "正确",
-            "错误", 
+            "错误"
         ],
         correctIndex: 0,
         points: 5,
-        
+        explanation: "直线ɭ上的任意点(x,y)关于点(x₀,y₀)对称的点坐标为(2x₀-x,2y₀-y)。思想：线是点的集合。"
     },
     {
-        question: "下列哪个是勾股定理的正确表达式？",
+        question: "4条直线切割1个平面，最多将该平面切割为几个部分",
         options: [
-            "a² + b² = c²",
-            "a + b = c",
-            "a² - b² = c²",
-            "a × b = c²"
+            "13", 
+            "12", 
+            "11", 
+            "9"
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         points: 5,
-        explanation: "勾股定理指出：在直角三角形中，两条直角边的平方和等于斜边的平方。如果直角三角形的两条直角边长度分别为 a 和 b，斜边长度为 c，则 a² + b² = c²。这个定理是几何学中最基本也是最重要的定理之一，有超过400种证明方法。"
+        explanation: "n点截线：Cn⁰  + Cn¹；n线截面：Cn⁰ + Cn¹。在此不详细证明。"
     },
     {
-        question: "对数函数 log₁₀(100) 的值是多少？",
-        options: ["1", "2", "10", "100"],
-        correctIndex: 1,
-        points: 5,
-        explanation: "对数函数 log₁₀(100) 表示 10 的多少次方等于 100。因为 10² = 100，所以 log₁₀(100) = 2。对数是幂运算的逆运算，是高中数学中的重要概念。"
-    },
-    {
-        question: "等差数列的通项公式是？",
+        question: "4个平面切割1个三维空间，最多将该空间切割为几个部分",
         options: [
-            "aₙ = a₁ + (n-1)d",
-            "aₙ = a₁ × rⁿ⁻¹", 
-            "aₙ = a₁ + nd",
-            "aₙ = a₁ × rⁿ"
+            "13",
+            "14",
+            "15",
+            "21"
         ],
-        correctIndex: 0,
-        points: 5,
-        explanation: "等差数列的通项公式 aₙ = a₁ + (n-1)d 中，a₁ 是首项，d 是公差，n 是项数。这个公式表示等差数列中任意一项的值等于首项加上项数减1乘以公差。"
+        correctIndex: 2,
+        points: 0,
+        explanation: "由上题找规律：n面截三维空间得到 (Cn⁰ + Cn¹ + Cn³) 个部分"
     },
     {
-        question: "二次函数 y = ax² + bx + c 的顶点坐标是？",
+        question: "平面内的两条直线不可以重合，空间内的两条直线不可以重合。（有争议，不计入总分）",
         options: [
-            "(-b/2a, c - b²/4a)",
-            "(-b/2a, (4ac - b²)/4a)",
-            "(b/2a, (4ac - b²)/4a)",
-            "(b/2a, c - b²/4a)"
+            "正确",
+            "错误",
         ],
         correctIndex: 1,
-        points: 5,
-        explanation: "二次函数 y = ax² + bx + c 的顶点坐标公式为 (-b/2a, (4ac - b²)/4a)。这个顶点是二次函数图像（抛物线）的最高点或最低点，也是对称轴与抛物线的交点。"
-    },
-    {
-        question: "下列哪个是三角恒等式？",
-        options: [
-            "sin²θ + cos²θ = 1",
-            "sinθ + cosθ = 1", 
-            "tanθ = sinθ × cosθ",
-            "cotθ = sinθ / cosθ"
-        ],
-        correctIndex: 0,
-        points: 5,
-        explanation: "sin²θ + cos²θ = 1 是最基本的三角恒等式，称为毕达哥拉斯恒等式。它表示对于任意角 θ，其正弦的平方与余弦的平方之和恒等于 1。这个恒等式在三角函数的化简和证明中非常重要。"
-    },
-    {
-        question: "概率的基本性质中，事件发生的概率P(A)的取值范围是？",
-        options: [
-            "0 ≤ P(A) ≤ 1",
-            "P(A) ≥ 0", 
-            "P(A) ≤ 1",
-            "-1 ≤ P(A) ≤ 1"
-        ],
-        correctIndex: 0,
-        points: 5,
-        explanation: "概率的公理化定义要求任何事件 A 的概率 P(A) 满足 0 ≤ P(A) ≤ 1。其中 P(A) = 0 表示事件不可能发生，P(A) = 1 表示事件必然发生。这是概率论最基本的性质之一。"
+        points: 0,
+        explanation: "平面内的两条直线可以重合，空间内的两条直线不可以重合。"
     }
 ];
