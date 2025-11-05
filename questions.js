@@ -1,4 +1,4 @@
-// 高中数学题库
+// 高中数学题库 - 包含详细解析
 const questions = [
     {
         question: "一元二次方程 ax² + bx + c = 0 (a ≠ 0) 的求根公式是？",
@@ -9,7 +9,8 @@ const questions = [
             "x = [b ± √(b² + 4ac)] / (2a)"
         ],
         correctIndex: 0,
-        points: 5
+        points: 5,
+        explanation: "一元二次方程的求根公式（也称为公式法）是通过配方法推导得出的，用于求解形如 ax² + bx + c = 0 的方程。其中判别式 Δ = b² - 4ac 决定了根的个数和性质：当 Δ > 0 时有两个不等实根，Δ = 0 时有两个相等实根，Δ < 0 时有两个共轭虚根。"
     },
     {
         question: "下列哪个函数在定义域内是单调递增的？",
@@ -20,13 +21,15 @@ const questions = [
             "y = -x² + 4"
         ],
         correctIndex: 2,
-        points: 5
+        points: 5,
+        explanation: "一次函数 y = kx + b 的单调性由斜率 k 决定：当 k > 0 时函数单调递增，当 k < 0 时函数单调递减。选项 C 中斜率 k = 3 > 0，因此在定义域 R 内单调递增。而二次函数 y = x² 在 x < 0 时递减，在 x > 0 时递增，不是在整个定义域内单调。"
     },
     {
         question: "三角函数 sin(90°) 的值是多少？",
         options: ["0", "1/2", "√2/2", "1"],
         correctIndex: 3,
-        points: 5
+        points: 5,
+        explanation: "在单位圆中，正弦函数表示角的终边与单位圆交点的 y 坐标。90° 角对应的终边与单位圆交于点 (0, 1)，其 y 坐标为 1，因此 sin(90°) = 1。这是三角函数的基本特殊角值之一，需要熟记。"
     },
     {
         question: "圆的面积公式是？",
@@ -37,7 +40,8 @@ const questions = [
             "A = 2πr²"
         ],
         correctIndex: 2,
-        points: 5
+        points: 5,
+        explanation: "圆的面积公式 A = πr² 可以通过将圆分割成无数个小扇形并重新排列近似为一个长方形来推导。其中 π 是圆周率（约等于 3.14159），r 是圆的半径。2πr 是圆的周长公式，不要混淆。"
     },
     {
         question: "下列哪个是勾股定理的正确表达式？",
@@ -48,56 +52,7 @@ const questions = [
             "a × b = c²"
         ],
         correctIndex: 0,
-        points: 5
-    },
-    {
-        question: "对数函数 log₁₀(100) 的值是多少？",
-        options: ["1", "2", "10", "100"],
-        correctIndex: 1,
-        points: 5
-    },
-    {
-        question: "等差数列的通项公式是？",
-        options: [
-            "aₙ = a₁ + (n-1)d",
-            "aₙ = a₁ × rⁿ⁻¹", 
-            "aₙ = a₁ + nd",
-            "aₙ = a₁ × rⁿ"
-        ],
-        correctIndex: 0,
-        points: 5
-    },
-    {
-        question: "二次函数 y = ax² + bx + c 的顶点坐标是？",
-        options: [
-            "(-b/2a, c - b²/4a)",
-            "(-b/2a, (4ac - b²)/4a)",
-            "(b/2a, (4ac - b²)/4a)",
-            "(b/2a, c - b²/4a)"
-        ],
-        correctIndex: 1,
-        points: 5
-    },
-    {
-        question: "下列哪个是三角恒等式？",
-        options: [
-            "sin²θ + cos²θ = 1",
-            "sinθ + cosθ = 1", 
-            "tanθ = sinθ × cosθ",
-            "cotθ = sinθ / cosθ"
-        ],
-        correctIndex: 0,
-        points: 5
-    },
-    {
-        question: "概率的基本性质中，事件发生的概率P(A)的取值范围是？",
-        options: [
-            "0 ≤ P(A) ≤ 1",
-            "P(A) ≥ 0", 
-            "P(A) ≤ 1",
-            "-1 ≤ P(A) ≤ 1"
-        ],
-        correctIndex: 0,
-        points: 5
+        points: 5,
+        explanation: "勾股定理指出：在直角三角形中，两条直角边的平方和等于斜边的平方。如果直角三角形的两条直角边长度分别为 a 和 b，斜边长度为 c，则 a² + b² = c²。这个定理是几何学中最基本也是最重要的定理之一，有超过400种证明方法。"
     }
 ];
