@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高中数学知识闯关</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>高中数学知识闯关</h1>
+        <div id="question-container" class="hide">
+            <div id="question">题目将显示在这里</div>
+            <div id="answer-buttons" class="btn-container">
+                <!-- 答案按钮将由JavaScript动态生成 -->
+            </div>
+        </div>
+        <div class="controls">
+            <button id="start-btn" class="start-btn btn">开始闯关</button>
+            <button id="next-btn" class="next-btn btn hide">下一题</button>
+        </div>
+        <div id="result" class="result hide">
+            <h2>闯关结果</h2>
+            <p>你的得分是: <span id="score">0</span> 分</p>
+        </div>
+    </div>
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
