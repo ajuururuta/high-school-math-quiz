@@ -88,7 +88,7 @@ const questions = [
         explanation: "平面内的两条直线可以重合，空间内的两条直线不可以重合。"
     },
     {
-        question: "双曲线: x²/a² - y²/b² = 1，焦距为2c，点P在双曲线上，过点P做两条与两渐近线分别垂直的直线，这两条直线与渐近线的交点分别为点A和点B，求∣PA∣×∣PB∣的值。",
+        question: "双曲线: x²/a² - y²/b² = 1，焦距为2c，点P在双曲线上，过点P做两条与两渐近线分别垂直的直线，这两条直线与渐近线的交点分别为点A和点B，求|PA|×|PB|的值。",
         options: [
             "(a²+b²)²/4c²",
             "c⁴/(a+b)²",
@@ -97,12 +97,12 @@ const questions = [
         ],
         correctIndex: 1,
         points: 5,
-        explanation: "P(x₀,y₀), ∣PA∣=∣ay₀-bx₀∣/c, ∣PB∣=∣ay₀+bx₀∣/c, ∣PA∣×∣PB∣=∣(ay₀)²-(bx₀)²∣/c², 又x₀²/a²-y₀²/b² = 1, 整理得∣(ay₀)²-(bx₀)²∣=a²b², 则∣PA∣×∣PB∣ = a²b²/c²"
+        explanation: "P(x₀,y₀), |PA|=|ay₀-bx₀|/c, |PB|=|ay₀+bx₀|/c, |PA|×|PB|=|(ay₀)²-(bx₀)²|/c², 又x₀²/a²-y₀²/b² = 1, 整理得|(ay₀)²-(bx₀)²|=a²b², 则|PA|×|PB|=a²b²/c²"
     },
     {
         question: "双曲线: x²/a² - y²/b² = 1 (e>2^0.5)，内准圆方程：x² + y² = a²b²/(b²-a²)，点P是双曲线上一点，过点P做内准圆的两条切线，切点分别为点M和点N，以下说法正确的是：",
         options: [
-            "∣MO∣² +∣NO∣² = ∣PO∣²"
+            "|MO|+|NO|² = |PO|²"
             "原点为O，M、O、N三点共线",
         ],
         correctIndex: 1,
