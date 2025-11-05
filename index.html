@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>高中数学知识闯关</title>
+    <title>高中数学知识闯关 - 答题解析版</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,12 +19,7 @@
         <div id="start-screen" class="screen active">
             <div class="start-content">
                 <h2>欢迎参加数学知识挑战!</h2>
-                <p>测试你的高中数学知识水平</p>
-                <ul class="quiz-info">
-                    <li>题目数量: <span id="info-total-questions">0</span></li>
-                    <li>每题分值: <span id="info-points-per-question">1</span>分</li>
-                    <li>满分: <span id="info-max-score">0</span>分</li>
-                </ul>
+                <p>测试你的高中数学知识水平 - 每答完一题可立即查看答案与解析</p>
                 <button id="start-btn" class="btn primary">开始挑战</button>
             </div>
         </div>
@@ -37,11 +32,22 @@
                 <div id="options-container" class="options-container">
                     <!-- 选项将由JavaScript动态生成 -->
                 </div>
+                
+                <!-- 答案与解析区域 - 初始隐藏 -->
+                <div id="answer-explanation" class="answer-explanation hidden">
+                    <h3>答案与解析</h3>
+                    <div class="answer-feedback">
+                        <p id="correct-indicator"></p>
+                        <p><strong>正确答案:</strong> <span id="correct-answer"></span></p>
+                        <p><strong>解析:</strong> <span id="explanation-text"></span></p>
+                    </div>
+                </div>
             </div>
+            
             <div class="navigation">
                 <button id="prev-btn" class="btn secondary">上一题</button>
-                <button id="next-btn" class="btn primary">下一题</button>
-                <button id="submit-btn" class="btn success">提交答案</button>
+                <button id="submit-btn" class="btn primary">提交答案</button>
+                <button id="next-btn" class="btn success">下一题</button>
             </div>
         </div>
         
@@ -56,26 +62,7 @@
                     <p>总分: <span id="total-score">0</span> / <span id="max-possible-score">0</span></p>
                 </div>
                 
-                <div class="detailed-results">
-                    <h3>答题详情</h3>
-                    <div class="result-stats">
-                        <div class="stat-item">
-                            <span class="stat-value" id="correct-answers">0</span>
-                            <span class="stat-label">答对题数</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-value" id="total-answered">0</span>
-                            <span class="stat-label">已回答题数</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-value" id="accuracy">0%</span>
-                            <span class="stat-label">正确率</span>
-                        </div>
-                    </div>
-                </div>
-                
                 <div class="action-buttons">
-                    <button id="review-btn" class="btn secondary">查看答案</button>
                     <button id="restart-btn" class="btn primary">重新开始</button>
                 </div>
             </div>
