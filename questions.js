@@ -54,5 +54,60 @@ const questions = [
         correctIndex: 0,
         points: 5,
         explanation: "勾股定理指出：在直角三角形中，两条直角边的平方和等于斜边的平方。如果直角三角形的两条直角边长度分别为 a 和 b，斜边长度为 c，则 a² + b² = c²。这个定理是几何学中最基本也是最重要的定理之一，有超过400种证明方法。"
+    },
+    {
+        question: "对数函数 log₁₀(100) 的值是多少？",
+        options: ["1", "2", "10", "100"],
+        correctIndex: 1,
+        points: 5,
+        explanation: "对数函数 log₁₀(100) 表示 10 的多少次方等于 100。因为 10² = 100，所以 log₁₀(100) = 2。对数是幂运算的逆运算，是高中数学中的重要概念。"
+    },
+    {
+        question: "等差数列的通项公式是？",
+        options: [
+            "aₙ = a₁ + (n-1)d",
+            "aₙ = a₁ × rⁿ⁻¹", 
+            "aₙ = a₁ + nd",
+            "aₙ = a₁ × rⁿ"
+        ],
+        correctIndex: 0,
+        points: 5,
+        explanation: "等差数列的通项公式 aₙ = a₁ + (n-1)d 中，a₁ 是首项，d 是公差，n 是项数。这个公式表示等差数列中任意一项的值等于首项加上项数减1乘以公差。"
+    },
+    {
+        question: "二次函数 y = ax² + bx + c 的顶点坐标是？",
+        options: [
+            "(-b/2a, c - b²/4a)",
+            "(-b/2a, (4ac - b²)/4a)",
+            "(b/2a, (4ac - b²)/4a)",
+            "(b/2a, c - b²/4a)"
+        ],
+        correctIndex: 1,
+        points: 5,
+        explanation: "二次函数 y = ax² + bx + c 的顶点坐标公式为 (-b/2a, (4ac - b²)/4a)。这个顶点是二次函数图像（抛物线）的最高点或最低点，也是对称轴与抛物线的交点。"
+    },
+    {
+        question: "下列哪个是三角恒等式？",
+        options: [
+            "sin²θ + cos²θ = 1",
+            "sinθ + cosθ = 1", 
+            "tanθ = sinθ × cosθ",
+            "cotθ = sinθ / cosθ"
+        ],
+        correctIndex: 0,
+        points: 5,
+        explanation: "sin²θ + cos²θ = 1 是最基本的三角恒等式，称为毕达哥拉斯恒等式。它表示对于任意角 θ，其正弦的平方与余弦的平方之和恒等于 1。这个恒等式在三角函数的化简和证明中非常重要。"
+    },
+    {
+        question: "概率的基本性质中，事件发生的概率P(A)的取值范围是？",
+        options: [
+            "0 ≤ P(A) ≤ 1",
+            "P(A) ≥ 0", 
+            "P(A) ≤ 1",
+            "-1 ≤ P(A) ≤ 1"
+        ],
+        correctIndex: 0,
+        points: 5,
+        explanation: "概率的公理化定义要求任何事件 A 的概率 P(A) 满足 0 ≤ P(A) ≤ 1。其中 P(A) = 0 表示事件不可能发生，P(A) = 1 表示事件必然发生。这是概率论最基本的性质之一。"
     }
 ];
