@@ -25,11 +25,11 @@ const questions = [
         explanation: "以上方法都没错，其中选项A和D的思路更好，而选项A的方案求出x₀和y₀的关系即为直线AD的方程，过程比选项D方案的过程简洁一些，故认为选项A最佳"
     },
     {
-        question: "三角函数 sin(90°) 的值是多少？",
-        options: ["0", "1/2", "√2/2", "1"],
-        correctIndex: 3,
+        question: "除形如 x/a + y/a = 1 (a≠0) 的直线方程以外的直线方程x、y轴上的截距不相同。",
+        options: ["正确", "错误"],
+        correctIndex: 1,
         points: 5,
-        explanation: "在单位圆中，正弦函数表示角的终边与单位圆交点的 y 坐标。90° 角对应的终边与单位圆交于点 (0, 1)，其 y 坐标为 1，因此 sin(90°) = 1。这是三角函数的基本特殊角值之一，需要熟记。"
+        explanation: "直线方程 y = kx (k≠0) 在x、y轴上的截距均为0"
     },
     {
         question: "圆的面积公式是？",
