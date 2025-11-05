@@ -7,7 +7,7 @@ const questions = [
             "错误"
         ],
         correctIndex: 1,
-        points: 5,
+        points: 4,
         explanation: "直线方程 y = kx (k≠0) 在x、y轴上的截距均为0"    },
     {
         question: "在平面直角坐标系中，已知点A、点B、点C坐标，射线AD平分∠BAC，以下哪种方法是一般情况下求直线AD方程的最佳方法？",
@@ -40,7 +40,7 @@ const questions = [
             "错误"
         ],
         correctIndex: 0,
-        points: 5,
+        points: 1,
         explanation: "直线ɭ上的任意点(x,y)关于点(x₀,y₀)对称的点坐标为(2x₀-x,2y₀-y)。思想：线是点的集合。"
     },
     {
@@ -52,7 +52,7 @@ const questions = [
             "9"
         ],
         correctIndex: 2,
-        points: 5,
+        points: 1,
         explanation: "n点截线：Cn⁰ + Cn¹；n线截面：Cn⁰ + Cn¹ + Cn²。在此不详细证明。"
     },
     {
@@ -64,7 +64,7 @@ const questions = [
             "21"
         ],
         correctIndex: 2,
-        points: 0,
+        points: 3,
         explanation: "由上题找规律：n面截三维空间得到 (Cn⁰ + Cn¹ + + Cn² + Cn³) 个部分"
     },
     {
