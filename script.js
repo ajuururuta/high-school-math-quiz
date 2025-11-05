@@ -7,27 +7,23 @@ const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const submitBtn = document.getElementById('submit-btn');
 const restartBtn = document.getElementById('restart-btn');
-const reviewBtn = document.getElementById('review-btn');
 
 const questionText = document.getElementById('question-text');
 const optionsContainer = document.getElementById('options-container');
 const currentQuestionEl = document.getElementById('current-question');
 const totalQuestionsEl = document.getElementById('total-questions');
 const currentScoreEl = document.getElementById('current-score');
-const progressEl = document.getElementById('progress');
+
+// 答案与解析相关元素
+const answerExplanation = document.getElementById('answer-explanation');
+const correctIndicator = document.getElementById('correct-indicator');
+const correctAnswerEl = document.getElementById('correct-answer');
+const explanationText = document.getElementById('explanation-text');
 
 // 结果屏幕元素
 const finalScoreEl = document.getElementById('final-score');
 const totalScoreEl = document.getElementById('total-score');
 const maxPossibleScoreEl = document.getElementById('max-possible-score');
-const correctAnswersEl = document.getElementById('correct-answers');
-const totalAnsweredEl = document.getElementById('total-answered');
-const accuracyEl = document.getElementById('accuracy');
-
-// 开始屏幕信息元素
-const infoTotalQuestions = document.getElementById('info-total-questions');
-const infoPointsPerQuestion = document.getElementById('info-points-per-question');
-const infoMaxScore = document.getElementById('info-max-score');
 
 // 全局变量
 let currentQuestionIndex = 0;
@@ -40,18 +36,13 @@ function init() {
     // 设置题目总数
     const totalQuestions = questions.length;
     totalQuestionsEl.textContent = totalQuestions;
-    infoTotalQuestions.textContent = totalQuestions;
     
     // 计算最大可能得分
     questions.forEach(q => {
         maxPossibleScore += q.points;
     });
     
-    infoMaxScore.textContent = maxPossibleScore;
     maxPossibleScoreEl.textContent = maxPossibleScore;
-    
-    // 设置每题分值（取第一题的分值作为示例）
-    infoPointsPerQuestion.textContent = questions[0].points;
     
     // 初始化用户答案数组
     userAnswers = new Array(totalQuestions).fill(null);
@@ -60,9 +51,8 @@ function init() {
     startBtn.addEventListener('click', startQuiz);
     prevBtn.addEventListener('click', showPreviousQuestion);
     nextBtn.addEventListener('click', showNextQuestion);
-    submitBtn.addEventListener('click', submitQuiz);
+    submitBtn.addEventListener('click', submitAnswer);
     restartBtn.addEventListener('click', restartQuiz);
-    reviewBtn.addEventListener('click', reviewAnswers);
 }
 
 // 开始测验
@@ -77,6 +67,9 @@ function startQuiz() {
 function showQuestion(index) {
     const question = questions[index];
     questionText.textContent = question.question;
+    
+    // 隐藏答案与解析区域
+    answerExplanation.classList.add('hidden');
     
     // 清空选项容器
     optionsContainer.innerHTML = '';
@@ -98,13 +91,17 @@ function showQuestion(index) {
     });
     
     // 更新导航按钮状态
-    prevBtn.disabled = index === 0;
-    nextBtn.style.display = index === questions.length - 1 ? 'none' : 'inline-block';
-    submitBtn.style.display = index === questions.length - 1 ? 'inline-block' : 'none';
+    updateNavigationButtons();
 }
 
 // 选择选项
 function selectOption(optionIndex) {
+    // 如果已经提交了答案，不允许修改
+    if (userAnswers[currentQuestionIndex] !== null && 
+        document.getElementById('answer-explanation').classList.contains('hidden') === false) {
+        return;
+    }
+    
     // 移除之前的选择
     const options = optionsContainer.querySelectorAll('.option');
     options.forEach(opt => opt.classList.remove('selected'));
@@ -115,29 +112,86 @@ function selectOption(optionIndex) {
     // 保存用户答案
     userAnswers[currentQuestionIndex] = optionIndex;
     
-    // 立即计算并更新得分
-    calculateScore();
-    updateProgress();
+    // 启用提交按钮
+    submitBtn.disabled = false;
 }
 
-// 计算得分
-function calculateScore() {
-    score = 0;
-    for (let i = 0; i < questions.length; i++) {
-        if (userAnswers[i] !== null && userAnswers[i] === questions[i].correctIndex) {
-            score += questions[i].points;
-        }
+// 提交答案
+function submitAnswer() {
+    // 确保用户已选择答案
+    if (userAnswers[currentQuestionIndex] === null) {
+        alert('请先选择一个答案！');
+        return;
     }
+    
+    const currentQuestion = questions[currentQuestionIndex];
+    const userAnswerIndex = userAnswers[currentQuestionIndex];
+    const isCorrect = userAnswerIndex === currentQuestion.correctIndex;
+    
+    // 更新选项样式以显示正确/错误
+    const options = optionsContainer.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        if (index === currentQuestion.correctIndex) {
+            option.classList.add('correct');
+        } else if (index === userAnswerIndex && !isCorrect) {
+            option.classList.add('incorrect');
+        }
+    });
+    
+    // 更新得分
+    if (isCorrect) {
+        score += currentQuestion.points;
+        updateProgress();
+    }
+    
+    // 显示答案与解析
+    showAnswerExplanation(isCorrect, currentQuestion);
+    
+    // 更新导航按钮状态
+    updateNavigationButtons();
 }
 
-// 更新进度和得分显示
-function updateProgress() {
-    currentQuestionEl.textContent = currentQuestionIndex + 1;
-    currentScoreEl.textContent = score;
+// 显示答案与解析 [2,4](@ref)
+function showAnswerExplanation(isCorrect, question) {
+    // 显示答案与解析区域
+    answerExplanation.classList.remove('hidden');
     
-    // 计算已回答题目数
-    const answeredCount = userAnswers.filter(answer => answer !== null).length;
-    totalAnsweredEl.textContent = answeredCount;
+    // 设置正确/错误指示器
+    correctIndicator.textContent = isCorrect ? '回答正确！' : '回答错误！';
+    correctIndicator.className = isCorrect ? 'correct' : 'incorrect';
+    
+    // 设置正确答案
+    const correctOptionIndex = question.correctIndex;
+    const correctOptionLetter = String.fromCharCode(65 + correctOptionIndex);
+    correctAnswerEl.textContent = `${correctOptionLetter}. ${question.options[correctOptionIndex]}`;
+    
+    // 设置解析文本
+    explanationText.textContent = question.explanation;
+}
+
+// 更新导航按钮状态
+function updateNavigationButtons() {
+    // 上一题按钮 - 只有在不是第一题时启用
+    prevBtn.disabled = currentQuestionIndex === 0;
+    
+    // 下一题按钮 - 只有在已回答当前题且不是最后一题时显示
+    const isAnswered = userAnswers[currentQuestionIndex] !== null;
+    const isLastQuestion = currentQuestionIndex === questions.length - 1;
+    
+    if (isAnswered && !isLastQuestion) {
+        nextBtn.style.display = 'inline-block';
+        submitBtn.style.display = 'none';
+    } else if (isAnswered && isLastQuestion) {
+        // 最后一题已答，显示完成测验按钮
+        nextBtn.style.display = 'none';
+        submitBtn.textContent = '完成测验';
+        submitBtn.removeEventListener('click', submitAnswer);
+        submitBtn.addEventListener('click', showResults);
+    } else {
+        nextBtn.style.display = 'none';
+        submitBtn.style.display = 'inline-block';
+        submitBtn.textContent = '提交答案';
+    }
 }
 
 // 显示上一题
@@ -146,6 +200,7 @@ function showPreviousQuestion() {
         currentQuestionIndex--;
         showQuestion(currentQuestionIndex);
         updateProgress();
+        updateNavigationButtons();
     }
 }
 
@@ -155,46 +210,24 @@ function showNextQuestion() {
         currentQuestionIndex++;
         showQuestion(currentQuestionIndex);
         updateProgress();
+        updateNavigationButtons();
     }
 }
 
-// 提交测验
-function submitQuiz() {
-    // 确保所有题目都已回答
-    const unanswered = userAnswers.filter(answer => answer === null).length;
-    if (unanswered > 0) {
-        if (!confirm(`您还有 ${unanswered} 道题未回答，确定要提交吗？`)) {
-            return;
-        }
-    }
-    
-    // 计算最终得分
-    calculateScore();
-    
-    // 显示结果屏幕
+// 显示结果
+function showResults() {
     quizScreen.classList.remove('active');
     resultsScreen.classList.add('active');
     
     // 更新结果屏幕信息
     finalScoreEl.textContent = score;
     totalScoreEl.textContent = score;
-    
-    // 计算答对题数
-    const correctCount = userAnswers.reduce((count, answer, index) => {
-        return count + (answer === questions[index].correctIndex ? 1 : 0);
-    }, 0);
-    
-    correctAnswersEl.textContent = correctCount;
-    
-    // 计算正确率
-    const accuracy = questions.length > 0 ? (correctCount / questions.length * 100).toFixed(1) : 0;
-    accuracyEl.textContent = `${accuracy}%`;
 }
 
-// 查看答案
-function reviewAnswers() {
-    // 这里可以实现查看详细答案的功能
-    alert('查看答案功能正在开发中...');
+// 更新进度
+function updateProgress() {
+    currentQuestionEl.textContent = currentQuestionIndex + 1;
+    currentScoreEl.textContent = score;
 }
 
 // 重新开始测验
