@@ -8,22 +8,80 @@
 </head>
 <body>
     <div class="quiz-container">
-        <h1>高中数学知识闯关</h1>
-        <div id="question-container" class="hide">
-            <div id="question">题目将显示在这里</div>
-            <div id="answer-buttons" class="btn-container">
-                <!-- 答案按钮将由JavaScript动态生成 -->
+        <header>
+            <h1>高中数学知识闯关</h1>
+            <div class="progress-info">
+                <span id="progress">题目: <span id="current-question">1</span>/<span id="total-questions">0</span></span>
+                <span id="score-display">得分: <span id="current-score">0</span>分</span>
+            </div>
+        </header>
+        
+        <div id="start-screen" class="screen active">
+            <div class="start-content">
+                <h2>欢迎参加数学知识挑战!</h2>
+                <p>测试你的高中数学知识水平</p>
+                <ul class="quiz-info">
+                    <li>题目数量: <span id="info-total-questions">0</span></li>
+                    <li>每题分值: <span id="info-points-per-question">1</span>分</li>
+                    <li>满分: <span id="info-max-score">0</span>分</li>
+                </ul>
+                <button id="start-btn" class="btn primary">开始挑战</button>
             </div>
         </div>
-        <div class="controls">
-            <button id="start-btn" class="start-btn btn">开始闯关</button>
-            <button id="next-btn" class="next-btn btn hide">下一题</button>
+        
+        <div id="quiz-screen" class="screen">
+            <div class="question-container">
+                <div class="question-header">
+                    <h2 id="question-text">题目内容将显示在这里</h2>
+                </div>
+                <div id="options-container" class="options-container">
+                    <!-- 选项将由JavaScript动态生成 -->
+                </div>
+            </div>
+            <div class="navigation">
+                <button id="prev-btn" class="btn secondary">上一题</button>
+                <button id="next-btn" class="btn primary">下一题</button>
+                <button id="submit-btn" class="btn success">提交答案</button>
+            </div>
         </div>
-        <div id="result" class="result hide">
-            <h2>闯关结果</h2>
-            <p>你的得分是: <span id="score">0</span> 分</p>
+        
+        <div id="results-screen" class="screen">
+            <div class="results-content">
+                <h2>答题完成!</h2>
+                <div class="score-summary">
+                    <div class="score-circle">
+                        <span id="final-score">0</span>
+                        <small>分</small>
+                    </div>
+                    <p>总分: <span id="total-score">0</span> / <span id="max-possible-score">0</span></p>
+                </div>
+                
+                <div class="detailed-results">
+                    <h3>答题详情</h3>
+                    <div class="result-stats">
+                        <div class="stat-item">
+                            <span class="stat-value" id="correct-answers">0</span>
+                            <span class="stat-label">答对题数</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="total-answered">0</span>
+                            <span class="stat-label">已回答题数</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="accuracy">0%</span>
+                            <span class="stat-label">正确率</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="review-btn" class="btn secondary">查看答案</button>
+                    <button id="restart-btn" class="btn primary">重新开始</button>
+                </div>
+            </div>
         </div>
     </div>
+
     <script src="questions.js"></script>
     <script src="script.js"></script>
 </body>
