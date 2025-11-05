@@ -107,6 +107,6 @@ const questions = [
         ],
         correctIndex: 1,
         points: 5,
-        explanation: "***待补***"
+        explanation: "待补"
     }
 ];
