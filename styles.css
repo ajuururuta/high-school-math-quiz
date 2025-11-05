@@ -42,6 +42,7 @@ header h1 {
     justify-content: space-between;
     font-size: 1.1rem;
     font-weight: 500;
+    margin-top: 10px;
 }
 
 /* 屏幕通用样式 */
@@ -72,18 +73,6 @@ header h1 {
     font-size: 1.1rem;
 }
 
-.quiz-info {
-    list-style: none;
-    margin: 20px 0;
-    text-align: left;
-    display: inline-block;
-}
-
-.quiz-info li {
-    margin: 10px 0;
-    font-size: 1.1rem;
-}
-
 /* 答题屏幕样式 */
 .question-container {
     margin-bottom: 30px;
@@ -97,12 +86,14 @@ header h1 {
     font-size: 1.3rem;
     line-height: 1.5;
     color: #333;
+    margin-bottom: 20px;
 }
 
 .options-container {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    margin-bottom: 30px;
 }
 
 .option {
@@ -136,71 +127,43 @@ header h1 {
     background-color: #ffebee;
 }
 
+/* 答案与解析区域样式 */
+.answer-explanation {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    border-left: 4px solid #2196F3;
+}
+
+.answer-explanation h3 {
+    color: #2196F3;
+    margin-bottom: 15px;
+}
+
+.answer-feedback p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+#correct-indicator.correct {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+#correct-indicator.incorrect {
+    color: #f44336;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
 .navigation {
     display: flex;
     justify-content: space-between;
     gap: 10px;
-}
-
-/* 结果屏幕样式 */
-.results-content {
-    text-align: center;
-}
-
-.score-summary {
-    margin: 30px 0;
-}
-
-.score-circle {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.score-circle span {
-    font-size: 3rem;
-    font-weight: bold;
-    line-height: 1;
-}
-
-.score-circle small {
-    font-size: 1rem;
-    margin-top: 5px;
-}
-
-.detailed-results {
-    margin: 30px 0;
-}
-
-.result-stats {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
-}
-
-.stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.stat-value {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #4CAF50;
-}
-
-.stat-label {
-    color: #666;
-    margin-top: 5px;
 }
 
 /* 按钮样式 */
@@ -242,6 +205,40 @@ header h1 {
     background-color: #0b7dda;
 }
 
+/* 结果屏幕样式 */
+.results-content {
+    text-align: center;
+}
+
+.score-summary {
+    margin: 30px 0;
+}
+
+.score-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.score-circle span {
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.score-circle small {
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
 .action-buttons {
     display: flex;
     gap: 15px;
@@ -266,11 +263,6 @@ header h1 {
     
     .navigation {
         flex-direction: column;
-    }
-    
-    .result-stats {
-        flex-direction: column;
-        gap: 20px;
     }
     
     .action-buttons {
