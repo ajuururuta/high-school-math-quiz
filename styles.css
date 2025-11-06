@@ -1,15 +1,14 @@
-/* 日系可爱极简风格样式表 */
-/* 基础变量定义，便于统一管理和调整 */
+/* 日系可爱极简风格样式表 - 响应式居中版本 */
 :root {
   --primary-color: #FFB6C1; /* 主色调：柔和的樱花粉 */
   --secondary-color: #A2D2FF; /* 辅助色：宁静的婴儿蓝 */
-  --accent-color: #FF9AA2; /* 强调色：稍亮的珊瑚粉，用于按钮和交互 */
-  --text-color: #5A5A5A; /* 主文字色：柔和的深灰，避免纯黑生硬 */
-  --background-color: #FFF9FB; /* 背景色：略带粉调的米白，温暖可爱 */
+  --accent-color: #FF9AA2; /* 强调色：稍亮的珊瑚粉 */
+  --text-color: #5A5A5A; /* 主文字色：柔和的深灰 */
+  --background-color: #FFF9FB; /* 背景色：略带粉调的米白 */
   --card-bg-color: #FFFFFF; /* 卡片背景色：纯白 */
   --border-radius: 16px; /* 圆角大小 */
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 轻柔阴影 */
-  --font-stack: 'M PLUS Rounded 1c', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; /* 圆润字体栈 */
+  --font-stack: 'M PLUS Rounded 1c', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 
 /* 基础样式重置与设置 */
@@ -19,69 +18,86 @@
   padding: 0;
 }
 
-body {
+/* 全屏居中布局 - 使用Flexbox实现完美居中 */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   font-family: var(--font-stack);
-  background: linear-gradient(135deg, var(--background-color) 0%, #fef5f8 100%); /* 渐变背景增加层次 */
+  background: linear-gradient(135deg, var(--background-color) 0%, #fef5f8 100%);
   color: var(--text-color);
   line-height: 1.6;
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
   min-height: 100vh;
-  padding: 20px;
-  /* 添加一个非常 subtle 的纹理背景图，可选 */
-  /* background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1" fill="%23ffb6c1" opacity="0.05"/></svg>'); */
 }
 
-/* 容器布局，居中并限制最大宽度 */
+/* 主容器样式 */
 .container {
+  width: 95%;
   max-width: 800px;
-  margin: 0 auto;
+  min-height: auto;
   background-color: var(--card-bg-color);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
   overflow: hidden;
   position: relative;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* 标题栏样式 */
 header {
-  background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); /* 渐变色标题栏 */
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
   color: white;
   padding: 25px 20px;
   text-align: center;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 header h1 {
   font-weight: 700;
-  font-size: 2.2em;
+  font-size: clamp(1.5rem, 2.5vw, 2.2em); /* 响应式字体大小 */
   letter-spacing: 1px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* 轻微文字阴影增加立体感 */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  margin: 0 auto; /* 确保标题居中 */
 }
 
 /* 分数显示样式 */
 .score {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: rgba(255, 255, 255, 0.9); /* 半透明白色背景 */
+  background-color: rgba(255, 255, 255, 0.9);
   color: var(--accent-color);
   padding: 8px 15px;
-  border-radius: 30px; /* 胶囊形状 */
+  border-radius: 30px;
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: 1em;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-left: auto; /* 确保分数靠右 */
 }
 
 /* 主内容区样式 */
 .quiz-container {
   padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 内容区域内部居中 */
+  flex-grow: 1;
 }
 
 .screen {
   display: none;
+  width: 100%;
+  text-align: center; /* 屏幕内容居中 */
 }
 .screen.active {
   display: block;
-  animation: fadeInUp 0.6s ease-out; /* 屏幕切换动画 */
+  animation: fadeInUp 0.6s ease-out;
 }
 
 /* 进度指示器 */
@@ -94,11 +110,12 @@ header h1 {
 
 /* 问题文本样式 */
 #question-text {
-  font-size: 1.4em;
+  font-size: clamp(1.1rem, 2vw, 1.4em); /* 响应式字体大小 */
   margin-bottom: 25px;
   text-align: center;
   font-weight: 500;
   line-height: 1.5;
+  width: 100%;
 }
 
 /* 选项容器 */
@@ -107,6 +124,8 @@ header h1 {
   flex-direction: column;
   gap: 12px;
   margin-bottom: 25px;
+  width: 100%;
+  max-width: 600px; /* 限制最大宽度 */
 }
 
 /* 单个选项样式 */
@@ -116,15 +135,17 @@ header h1 {
   padding: 16px 20px;
   border-radius: var(--border-radius);
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 平滑的过渡效果 */
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   display: flex;
   align-items: center;
+  text-align: left;
+  width: 100%;
 }
 
 .option:hover {
   border-color: var(--primary-color);
   background-color: #fff5f7;
-  transform: translateY(-2px); /* 悬停轻微上浮 */
+  transform: translateY(-2px);
   box-shadow: 0 3px 8px rgba(0,0,0,0.08);
 }
 
@@ -134,11 +155,11 @@ header h1 {
 }
 
 .option.correct {
-  border-color: #8bc34a; /* 正确选项绿色 */
+  border-color: #8bc34a;
   background-color: #f1f8e9;
 }
 .option.wrong {
-  border-color: #f44336; /* 错误选项红色 */
+  border-color: #f44336;
   background-color: #ffebee;
 }
 
@@ -155,6 +176,7 @@ header h1 {
   margin-right: 12px;
   font-size: 0.8em;
   font-weight: bold;
+  flex-shrink: 0; /* 防止字母标记被压缩 */
 }
 
 /* 按钮基础样式 */
@@ -163,7 +185,7 @@ button {
   color: white;
   border: none;
   padding: 14px 28px;
-  border-radius: 30px; /* 椭圆形按钮 */
+  border-radius: 30px;
   cursor: pointer;
   font-family: inherit;
   font-size: 1em;
@@ -172,10 +194,12 @@ button {
   display: block;
   margin: 20px auto 0;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: auto;
+  min-width: 150px;
 }
 
 button:hover {
-  background-color: #ff8090; /* 更深的粉色 */
+  background-color: #ff8090;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
@@ -188,32 +212,40 @@ button:active {
 #start-screen {
   text-align: center;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #start-screen h2 {
   color: var(--primary-color);
   margin-bottom: 15px;
-  font-size: 1.8em;
+  font-size: clamp(1.5rem, 3vw, 1.8em);
 }
 #start-screen p {
   margin-bottom: 25px;
   font-size: 1.1em;
+  max-width: 600px;
 }
 
 /* 结果屏幕特定样式 */
 #result-screen {
   text-align: center;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #final-score {
-  font-size: 3em;
+  font-size: clamp(2.5rem, 8vw, 3em);
   font-weight: bold;
   color: var(--accent-color);
   display: block;
   margin: 10px 0;
 }
 #result-message {
-  font-size: 1.2em;
+  font-size: clamp(1rem, 2vw, 1.2em);
   margin: 20px 0;
+  max-width: 600px;
 }
 
 /* 隐藏类 */
@@ -234,23 +266,105 @@ button:active {
 }
 
 /* 响应式设计：移动端适配 */
-@media (max-width: 600px) {
-  body {
+@media (max-width: 768px) {
+  html, body {
     padding: 10px;
+    display: block; /* 在小屏幕上取消flex居中，使用正常流 */
+    height: auto;
+    min-height: 100vh;
   }
+  
   .container {
+    width: 100%;
+    margin: 10px auto;
     border-radius: 12px;
   }
+  
+  header {
+    padding: 15px 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
   header h1 {
-    font-size: 1.8em;
+    font-size: 1.5em;
+    order: 1; /* 标题在上 */
   }
+  
+  .score {
+    order: 2; /* 分数在下 */
+    margin: 0 auto;
+  }
+  
   .quiz-container {
-    padding: 20px;
+    padding: 20px 15px;
   }
+  
   #question-text {
-    font-size: 1.2em;
+    font-size: 1.1em;
+    line-height: 1.4;
   }
+  
   .option {
-    padding: 14px 16px;
+    padding: 12px 15px;
+    font-size: 0.9em;
   }
+  
+  button {
+    padding: 12px 24px;
+    font-size: 0.9em;
+    min-width: 120px;
+  }
+  
+  .options {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .quiz-container {
+    padding: 15px 10px;
+  }
+  
+  header {
+    padding: 10px 5px;
+  }
+  
+  header h1 {
+    font-size: 1.3em;
+  }
+  
+  .option {
+    padding: 10px 12px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    min-width: 100px;
+  }
+  
+  #start-screen h2 {
+    font-size: 1.3em;
+  }
+  
+  #final-score {
+    font-size: 2em;
+  }
+}
+
+/* 特大屏幕适配 */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 900px;
+  }
+}
+
+/* 防止内容溢出 */
+* {
+  max-width: 100%;
+}
+
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
 }
