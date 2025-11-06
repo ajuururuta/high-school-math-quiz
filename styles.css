@@ -1,75 +1,375 @@
-/* 日系可爱极简风配色方案 */
-:root {
-  /* 主色调：低饱和度的温暖中性色 */
-  --color-primary: #FFEFEF; /* 樱色：极浅的粉白色，作为背景，甜美柔和 */
-  --color-secondary: #F0F0F0; /* 白练色：浅灰白，用于卡片背景或区块分隔 */
-  --color-accent: #8EC0E4; /* 空色：清淡的蓝色，作为链接、按钮的强调色 */
-  --color-text-primary: #5A5A5A; /* 鼠色：深灰色，主文字色，比纯黑柔和 */
-  --color-text-secondary: #8C8C8C; /* 灰色：辅助文字色 */
-  --color-border: #E0DCDC; /* 浅灰色，用于边框和分隔线 */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
 }
 
-/* 基础样式 */
 body {
-  background-color: var(--color-primary);
-  color: var(--color-text-primary);
-  font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; /* 推荐使用简洁的无衬线字体 */
-  line-height: 1.6;
+    background: linear-gradient(135deg, #ffb7d5 0%, #a6c1ff 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #5a5a5a;
 }
 
-/* 容器和卡片 */
-.container {
-  background-color: var(--color-secondary);
-  border: 1px solid var(--color-border);
-  border-radius: 8px; /* 适度的圆角增添柔和感 */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); /* 非常轻量的阴影增加层次感但不突兀 */
+.quiz-container {
+    width: 100%;
+    max-width: 900px;
+    background-color: #fff9fb;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(255, 182, 193, 0.3);
+    overflow: hidden;
+    border: 2px solid #ffe4e9;
 }
 
-/* 标题 */
-h1, h2, h3 {
-  color: var(--color-text-primary);
-  font-weight: 600; /* 适中的字重 */
-  border-bottom: 1px solid var(--color-border); /* 可选：为标题添加细微的分隔线 */
-  padding-bottom: 0.5rem;
+header {
+    background: linear-gradient(135deg, #ff9eb5 0%, #ffb6c1 100%);
+    color: #fff;
+    padding: 25px;
+    text-align: center;
+    position: relative;
 }
 
-/* 链接和按钮 */
-a {
-  color: var(--color-accent);
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(255, 182, 193, 0.5);
 }
 
-a:hover {
-  color: darken(var(--color-accent), 10%); /* 鼠标悬停时颜色稍深 */
-  text-decoration: underline;
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
-button, .button {
-  background-color: var(--color-accent);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+.screen {
+    display: none;
+    padding: 30px;
+    min-height: 500px;
 }
 
-button:hover, .button:hover {
-  background-color: darken(var(--color-accent), 10%);
+.screen.active {
+    display: block;
 }
 
-/* 输入框 */
-input, textarea, select {
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-  padding: 0.5rem;
-  background-color: white;
-  color: var(--color-text-primary);
+.start-content {
+    text-align: center;
+    padding: 20px;
 }
 
-input:focus, textarea:focus, select:focus {
-  outline: none;
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 2px rgba(142, 192, 228, 0.2); /* 聚焦时的淡淡光晕 */
+.start-content h2 {
+    color: #ff6b93;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.start-content p {
+    color: #8a8a8a;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.quiz-info {
+    list-style: none;
+    margin: 25px 0;
+    text-align: left;
+    display: inline-block;
+    background-color: #fff0f5;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #ffb6c1;
+}
+
+.quiz-info li {
+    margin: 12px 0;
+    font-size: 1.1rem;
+    color: #ff6b93;
+}
+
+.question-container {
+    margin-bottom: 30px;
+}
+
+.question-header {
+    margin-bottom: 25px;
+}
+
+#question-text {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #5a5a5a;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff5f7;
+    border-radius: 10px;
+    border-left: 4px solid #ffb6c1;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option {
+    padding: 16px 20px;
+    border: 2px solid #ffe4e9;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.05rem;
+    background-color: #fff9fb;
+    display: flex;
+    align-items: center;
+}
+
+.option:hover {
+    border-color: #ff9eb5;
+    background-color: #fff0f5;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(255, 182, 193, 0.2);
+}
+
+.option.selected {
+    border-color: #ff9eb5;
+    background-color: #ffe4e9;
+    font-weight: bold;
+}
+
+.option.correct {
+    border-color: #a8e6cf;
+    background-color: #e8f5e9;
+}
+
+.option.incorrect {
+    border-color: #ffaaa5;
+    background-color: #ffebee;
+}
+
+.option-letter {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: #ffb6c1;
+    color: white;
+    border-radius: 50%;
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn.primary {
+    background: linear-gradient(135deg, #ff9eb5 0%, #ffb6c1 100%);
+    color: white;
+}
+
+.btn.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(255, 158, 181, 0.4);
+}
+
+.btn.secondary {
+    background-color: #f0f0f0;
+    color: #888;
+}
+
+.btn.secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.btn.success {
+    background: linear-gradient(135deg, #a6c1ff 0%, #b4d0ff 100%);
+    color: white;
+}
+
+.btn.success:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(166, 193, 255, 0.4);
+}
+
+.answer-explanation {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f0f7ff;
+    border-left: 4px solid #a6c1ff;
+}
+
+.answer-explanation h3 {
+    color: #a6c1ff;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.answer-feedback p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+#correct-indicator.correct {
+    color: #a8e6cf;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+#correct-indicator.incorrect {
+    color: #ffaaa5;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.results-content {
+    text-align: center;
+}
+
+.score-summary {
+    margin: 30px 0;
+}
+
+.score-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff9eb5 0%, #ffb6c1 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 25px;
+    box-shadow: 0 10px 20px rgba(255, 182, 193, 0.3);
+}
+
+.score-circle span {
+    font-size: 3.5rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.score-circle small {
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.donation-section {
+    margin: 40px 0;
+    padding: 25px;
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cc 100%);
+    border-radius: 15px;
+    border: 2px dashed #ffd166;
+    text-align: center;
+}
+
+.donation-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #5a5a5a;
+}
+
+.qr-code {
+    max-width: 250px;
+    margin: 0 auto;
+    border: 1px solid #ffd166;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+}
+
+.qr-code img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #ffb6c1;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+@media (max-width: 768px) {
+    .quiz-container {
+        margin: 10px;
+        border-radius: 15px;
+    }
+    
+    .screen {
+        padding: 20px;
+    }
+    
+    header {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .navigation {
+        flex-direction: column;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .score-circle {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .score-circle span {
+        font-size: 2.8rem;
+    }
+    
+    .donation-text {
+        font-size: 1.1rem;
+    }
 }
