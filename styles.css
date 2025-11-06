@@ -1,4 +1,4 @@
-/* 日系可爱极简风格样式表 - 响应式居中版本 */
+/* 日系可爱极简风格样式表 - 完整修正版 */
 :root {
   --primary-color: #FFB6C1; /* 主色调：柔和的樱花粉 */
   --secondary-color: #A2D2FF; /* 辅助色：宁静的婴儿蓝 */
@@ -18,7 +18,6 @@
   padding: 0;
 }
 
-/* 全屏居中布局 - 使用Flexbox实现完美居中 */
 html, body {
   height: 100%;
   margin: 0;
@@ -28,15 +27,15 @@ html, body {
   color: var(--text-color);
   line-height: 1.6;
   display: flex;
-  justify-content: center; /* 水平居中 */
-  align-items: center; /* 垂直居中 */
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
 }
 
 /* 主容器样式 */
-.container {
+.quiz-container {
   width: 95%;
-  max-width: 800px;
+  max-width: 900px;
   min-height: auto;
   background-color: var(--card-bg-color);
   border-radius: var(--border-radius);
@@ -63,79 +62,118 @@ header {
 
 header h1 {
   font-weight: 700;
-  font-size: clamp(1.5rem, 2.5vw, 2.2em); /* 响应式字体大小 */
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
   letter-spacing: 1px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-  margin: 0 auto; /* 确保标题居中 */
+  margin: 0 auto;
 }
 
-/* 分数显示样式 */
-.score {
-  background-color: rgba(255, 255, 255, 0.9);
-  color: var(--accent-color);
-  padding: 8px 15px;
-  border-radius: 30px;
-  font-weight: bold;
-  font-size: 1em;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  margin-left: auto; /* 确保分数靠右 */
-}
-
-/* 主内容区样式 */
-.quiz-container {
-  padding: 30px;
+/* 进度信息样式 */
+.progress-info {
   display: flex;
-  flex-direction: column;
-  align-items: center; /* 内容区域内部居中 */
-  flex-grow: 1;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: 500;
+  width: 100%;
+  margin-top: 15px;
 }
 
+/* 屏幕样式 */
 .screen {
   display: none;
   width: 100%;
-  text-align: center; /* 屏幕内容居中 */
+  text-align: center;
+  padding: 30px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .screen.active {
-  display: block;
+  display: flex;
   animation: fadeInUp 0.6s ease-out;
 }
 
-/* 进度指示器 */
-.progress {
+/* 开始屏幕样式 */
+.start-content {
   text-align: center;
-  margin-bottom: 25px;
-  font-size: 0.9em;
-  color: #999;
-}
-
-/* 问题文本样式 */
-#question-text {
-  font-size: clamp(1.1rem, 2vw, 1.4em); /* 响应式字体大小 */
-  margin-bottom: 25px;
-  text-align: center;
-  font-weight: 500;
-  line-height: 1.5;
+  padding: 20px;
   width: 100%;
+  max-width: 600px;
 }
 
-/* 选项容器 */
-.options {
+.start-content h2 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
+}
+
+.start-content p {
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.quiz-info {
+  list-style: none;
+  margin: 25px 0;
+  text-align: left;
+  display: inline-block;
+  background-color: #f5f9ff;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid var(--primary-color);
+  width: 100%;
+  max-width: 400px;
+}
+
+.quiz-info li {
+  margin: 12px 0;
+  font-size: 1.1rem;
+}
+
+/* 问题容器样式 */
+.question-container {
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 700px;
+}
+
+.question-header {
+  margin-bottom: 25px;
+}
+
+#question-text {
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  border-left: 4px solid var(--primary-color);
+  text-align: left;
+}
+
+/* 选项容器样式 */
+.options-container {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-bottom: 25px;
   width: 100%;
-  max-width: 600px; /* 限制最大宽度 */
 }
 
-/* 单个选项样式 */
 .option {
-  background-color: #f8f8f8;
-  border: 2px solid #f0f0f0;
   padding: 16px 20px;
-  border-radius: var(--border-radius);
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.3s ease;
+  font-size: 1.05rem;
+  background-color: #f9f9f9;
   display: flex;
   align-items: center;
   text-align: left;
@@ -144,108 +182,205 @@ header h1 {
 
 .option:hover {
   border-color: var(--primary-color);
-  background-color: #fff5f7;
+  background-color: #f0f8f0;
   transform: translateY(-2px);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
 }
 
 .option.selected {
-  border-color: var(--accent-color);
-  background-color: #ffeef0;
+  border-color: var(--primary-color);
+  background-color: #e8f5e9;
+  font-weight: bold;
 }
 
 .option.correct {
-  border-color: #8bc34a;
-  background-color: #f1f8e9;
+  border-color: #4CAF50;
+  background-color: #e8f5e9;
 }
-.option.wrong {
+
+.option.incorrect {
   border-color: #f44336;
   background-color: #ffebee;
 }
 
-/* 选项前的字母标记 */
 .option-letter {
   display: inline-flex;
-  align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  align-items: center;
+  width: 30px;
+  height: 30px;
   background-color: var(--primary-color);
   color: white;
   border-radius: 50%;
-  margin-right: 12px;
-  font-size: 0.8em;
+  margin-right: 15px;
   font-weight: bold;
-  flex-shrink: 0; /* 防止字母标记被压缩 */
 }
 
-/* 按钮基础样式 */
-button {
-  background-color: var(--accent-color);
-  color: white;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 1em;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  display: block;
-  margin: 20px auto 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  width: auto;
-  min-width: 150px;
-}
-
-button:hover {
-  background-color: #ff8090;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-button:active {
-  transform: translateY(0);
-}
-
-/* 开始屏幕特定样式 */
-#start-screen {
-  text-align: center;
+/* 答案与解析样式 */
+.answer-explanation {
+  margin-top: 25px;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  border-radius: 10px;
+  background-color: #f0f7ff;
+  border-left: 4px solid var(--secondary-color);
+  width: 100%;
+  text-align: left;
 }
-#start-screen h2 {
-  color: var(--primary-color);
+
+.answer-explanation h3 {
+  color: var(--secondary-color);
   margin-bottom: 15px;
-  font-size: clamp(1.5rem, 3vw, 1.8em);
+  font-size: 1.3rem;
 }
-#start-screen p {
-  margin-bottom: 25px;
-  font-size: 1.1em;
+
+.answer-feedback p {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+#correct-indicator.correct {
+  color: #4CAF50;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#correct-indicator.incorrect {
+  color: #f44336;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* 导航按钮样式 */
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 30px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.btn {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #FF9AA2 100%);
+  color: white;
+}
+
+.btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(76, 175, 80, 0.3);
+}
+
+.btn.secondary {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.btn.secondary:hover {
+  background-color: #e0e0e0;
+}
+
+.btn.success {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #6BB5FF 100%);
+  color: white;
+}
+
+.btn.success:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(33, 150, 243, 0.3);
+}
+
+/* 结果屏幕样式 */
+.results-content {
+  text-align: center;
+  width: 100%;
   max-width: 600px;
 }
 
-/* 结果屏幕特定样式 */
-#result-screen {
-  text-align: center;
-  padding: 20px;
+.score-summary {
+  margin: 30px 0;
+}
+
+.score-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #FF9AA2 100%);
+  color: white;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  margin: 0 auto 25px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
-#final-score {
-  font-size: clamp(2.5rem, 8vw, 3em);
+
+.score-circle span {
+  font-size: 3.5rem;
   font-weight: bold;
-  color: var(--accent-color);
-  display: block;
-  margin: 10px 0;
+  line-height: 1;
 }
-#result-message {
-  font-size: clamp(1rem, 2vw, 1.2em);
-  margin: 20px 0;
-  max-width: 600px;
+
+.score-circle small {
+  font-size: 1.2rem;
+  margin-top: 5px;
+}
+
+/* 打赏区域样式 */
+.donation-section {
+  margin: 40px 0;
+  padding: 25px;
+  background: linear-gradient(135deg, #fff9e6 0%, #fff3cc 100%);
+  border-radius: 15px;
+  border: 2px dashed #FFC107;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.donation-text {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.qr-code {
+  max-width: 250px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+}
+
+.qr-code img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 操作按钮区域 */
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+  width: 100%;
+  max-width: 400px;
 }
 
 /* 隐藏类 */
@@ -265,97 +400,156 @@ button:active {
   }
 }
 
-/* 响应式设计：移动端适配 */
+/* 响应式设计：平板和移动设备 */
 @media (max-width: 768px) {
   html, body {
     padding: 10px;
-    display: block; /* 在小屏幕上取消flex居中，使用正常流 */
+    display: block;
     height: auto;
     min-height: 100vh;
   }
   
-  .container {
+  .quiz-container {
     width: 100%;
     margin: 10px auto;
     border-radius: 12px;
   }
   
   header {
-    padding: 15px 10px;
+    padding: 20px 15px;
     flex-direction: column;
     gap: 10px;
   }
   
   header h1 {
-    font-size: 1.5em;
-    order: 1; /* 标题在上 */
+    font-size: 1.8rem;
+    order: 1;
   }
   
-  .score {
-    order: 2; /* 分数在下 */
-    margin: 0 auto;
+  .progress-info {
+    order: 2;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
   }
   
-  .quiz-container {
-    padding: 20px 15px;
+  .screen {
+    padding: 20px;
+    min-height: auto;
+  }
+  
+  .question-container {
+    margin-bottom: 20px;
   }
   
   #question-text {
-    font-size: 1.1em;
-    line-height: 1.4;
+    font-size: 1.2rem;
+    padding: 12px;
   }
   
   .option {
-    padding: 12px 15px;
-    font-size: 0.9em;
+    padding: 14px 16px;
+    font-size: 1rem;
   }
   
-  button {
+  .navigation {
+    flex-direction: column;
+  }
+  
+  .btn {
     padding: 12px 24px;
-    font-size: 0.9em;
-    min-width: 120px;
   }
   
-  .options {
-    gap: 8px;
+  .score-circle {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .score-circle span {
+    font-size: 2.8rem;
+  }
+  
+  .donation-text {
+    font-size: 1.1rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
   }
 }
 
+/* 小屏幕手机适配 */
 @media (max-width: 480px) {
   .quiz-container {
+    margin: 5px auto;
+  }
+  
+  .screen {
     padding: 15px 10px;
   }
   
   header {
-    padding: 10px 5px;
+    padding: 15px 10px;
   }
   
   header h1 {
-    font-size: 1.3em;
+    font-size: 1.5rem;
+  }
+  
+  .start-content h2 {
+    font-size: 1.3rem;
+  }
+  
+  .quiz-info {
+    padding: 15px;
+  }
+  
+  .quiz-info li {
+    font-size: 1rem;
+  }
+  
+  #question-text {
+    font-size: 1.1rem;
+    line-height: 1.4;
   }
   
   .option {
-    padding: 10px 12px;
+    padding: 12px 14px;
   }
   
-  button {
+  .option-letter {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+  }
+  
+  .btn {
     padding: 10px 20px;
-    min-width: 100px;
+    font-size: 0.9rem;
   }
   
-  #start-screen h2 {
-    font-size: 1.3em;
+  .score-circle {
+    width: 130px;
+    height: 130px;
   }
   
-  #final-score {
-    font-size: 2em;
+  .score-circle span {
+    font-size: 2.5rem;
+  }
+  
+  .donation-section {
+    padding: 20px;
+  }
+  
+  .donation-text {
+    font-size: 1rem;
   }
 }
 
 /* 特大屏幕适配 */
 @media (min-width: 1200px) {
-  .container {
-    max-width: 900px;
+  .quiz-container {
+    max-width: 1000px;
   }
 }
 
@@ -367,4 +561,29 @@ button:active {
 img, video, iframe {
   max-width: 100%;
   height: auto;
+}
+
+/* 数学公式样式 */
+.math-formula {
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  margin: 5px 0;
+}
+
+/* 进度条样式 */
+.progress-bar {
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  margin: 20px 0;
+  overflow: hidden;
+  width: 100%;
+  max-width: 500px;
+}
+
+.progress {
+  height: 100%;
+  background-color: var(--primary-color);
+  width: 0%;
+  transition: width 0.5s ease;
 }
