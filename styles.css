@@ -1,160 +1,75 @@
+/* 日系可爱极简风配色方案 */
 :root {
-    /* 主色调 - 柔和甜美 */
-    --color-primary: #FFB7C5; /* 樱粉色 - 主要按钮和重点元素 */
-    --color-primary-light: #FFD9DF; /* 浅粉 - 悬浮状态 */
-    --color-primary-dark: #F8A3B2; /* 深粉 - 激活状态 */
-    
-    /* 中性色调 - 简洁干净 */
-    --color-bg: #FFF9FB; /* 极浅粉白 - 主背景 */
-    --color-surface: #FFFFFF; /* 纯白 - 卡片背景 */
-    --color-text-primary: #5A4A4F; /* 暖灰褐 - 主要文字 */
-    --color-text-secondary: #8C7B7F; /* 中灰粉 - 次要文字 */
-    --color-border: #F0E6E9; /* 浅粉灰 - 边框和分隔线 */
-    
-    /* 辅助色 - 活泼点缀 */
-    --color-accent-blue: #A3D1E8; /* 淡蓝 - 信息提示 */
-    --color-accent-yellow: #FFE9A3; /* 淡黄 - 强调内容 */
-    --color-accent-green: #C4E0C5; /* 淡绿 - 正确/成功状态 */
+  /* 主色调：低饱和度的温暖中性色 */
+  --color-primary: #FFEFEF; /* 樱色：极浅的粉白色，作为背景，甜美柔和 */
+  --color-secondary: #F0F0F0; /* 白练色：浅灰白，用于卡片背景或区块分隔 */
+  --color-accent: #8EC0E4; /* 空色：清淡的蓝色，作为链接、按钮的强调色 */
+  --color-text-primary: #5A5A5A; /* 鼠色：深灰色，主文字色，比纯黑柔和 */
+  --color-text-secondary: #8C8C8C; /* 灰色：辅助文字色 */
+  --color-border: #E0DCDC; /* 浅灰色，用于边框和分隔线 */
 }
 
-## 🧩 UI组件具体样式
-
-### 整体布局
+/* 基础样式 */
 body {
-    background-color: var(--color-bg);
-    color: var(--color-text-primary);
-    font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-    line-height: 1.6;
+  background-color: var(--color-primary);
+  color: var(--color-text-primary);
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; /* 推荐使用简洁的无衬线字体 */
+  line-height: 1.6;
 }
 
 /* 容器和卡片 */
 .container {
-    background-color: var(--color-surface);
-    border-radius: 16px; /* 圆角更大更可爱 */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); /* 更柔和的阴影 */
-    border: 1px solid var(--color-border);
-    padding: 2rem;
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 8px; /* 适度的圆角增添柔和感 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); /* 非常轻量的阴影增加层次感但不突兀 */
 }
 
-### 按钮样式
-.btn-primary {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-    color: white;
-    border: none;
-    border-radius: 12px; /* 可爱的圆角 */
-    padding: 12px 24px;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(255, 183, 197, 0.3);
-    transition: all 0.3s ease;
-    cursor: pointer;
+/* 标题 */
+h1, h2, h3 {
+  color: var(--color-text-primary);
+  font-weight: 600; /* 适中的字重 */
+  border-bottom: 1px solid var(--color-border); /* 可选：为标题添加细微的分隔线 */
+  padding-bottom: 0.5rem;
 }
 
-.btn-primary:hover {
-    background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(255, 183, 197, 0.4);
+/* 链接和按钮 */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
 }
 
-### 题目和选项样式
-.question-container {
-    background: var(--color-surface);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin: 1rem 0;
+a:hover {
+  color: darken(var(--color-accent), 10%); /* 鼠标悬停时颜色稍深 */
+  text-decoration: underline;
 }
 
-.option {
-    background: var(--color-bg);
-    border: 2px solid var(--color-border);
-    border-radius: 10px;
-    padding: 1rem;
-    margin: 0.5rem 0;
-    transition: all 0.2s ease;
-    cursor: pointer;
+button, .button {
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
 }
 
-.option:hover {
-    border-color: var(--color-primary-light);
-    transform: scale(1.02);
+button:hover, .button:hover {
+  background-color: darken(var(--color-accent), 10%);
 }
 
-.option.selected {
-    border-color: var(--color-primary);
-    background-color: rgba(255, 183, 197, 0.1);
-    box-shadow: 0 2px 8px rgba(255, 183, 197, 0.2);
+/* 输入框 */
+input, textarea, select {
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.5rem;
+  background-color: white;
+  color: var(--color-text-primary);
 }
 
-### 进度和得分显示
-.progress-bar {
-    background-color: var(--color-border);
-    border-radius: 10px;
-    height: 8px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    background: linear-gradient(90deg, var(--color-primary), var(--color-accent-blue));
-    height: 100%;
-    border-radius: 10px;
-    transition: width 0.3s ease;
-}
-
-.score-display {
-    background: var(--color-surface);
-    border: 2px solid var(--color-border);
-    border-radius: 12px;
-    padding: 0.5rem 1rem;
-    font-weight: bold;
-    color: var(--color-primary-dark);
-}
-
-## ✨ 可爱细节增强
-
-### 图标和装饰
-.cute-icon {
-    color: var(--color-primary);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-}
-
-/* 添加一些可爱的形状装饰 */
-.decoration-circle {
-    width: 60px;
-    height: 60px;
-    background: var(--color-accent-yellow);
-    border-radius: 50%;
-    opacity: 0.1;
-    position: absolute;
-    z-index: -1;
-}
-
-### 动画效果
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-}
-
-.cute-float {
-    animation: float 3s ease-in-out infinite;
-}
-
-.fade-in {
-    animation: fadeIn 0.5s ease-in;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-## 📱 响应式调整
-@media (max-width: 768px) {
-    .container {
-        margin: 1rem;
-        padding: 1.5rem;
-        border-radius: 12px;
-    }
-    
-    .option {
-        padding: 0.8rem;
-    }
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(142, 192, 228, 0.2); /* 聚焦时的淡淡光晕 */
 }
