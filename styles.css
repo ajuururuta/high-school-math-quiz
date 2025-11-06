@@ -59,10 +59,7 @@ header::before {
     animation: shimmer 3s ease-in-out infinite;
 }
 
-@keyframes shimmer {
-    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-}
+
 
 h1 {
     font-size: 2.2rem;
@@ -583,7 +580,12 @@ h1 {
     background-color: #ffb6c1;
     width: 0%;
     transition: width 0.5s ease;
-    /* 移除了脉动效果 */
+    animation: progressPulse 2s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
 }
 
 /* 添加多邻国风格的微交互效果 */
