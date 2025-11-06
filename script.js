@@ -71,14 +71,10 @@ function init() {
 
 // 开始测验
 function startQuiz() {
-    // 添加 quiz-mode 类到 body
-    document.body.classList.add('quiz-mode');
     startScreen.classList.remove('active');
     quizScreen.classList.add('active');
-    currentQuestionIndex = 0;
-    score = 0;
-    updateScore();
     showQuestion(currentQuestionIndex);
+    updateProgress();
 }
 
 // 显示题目
@@ -238,25 +234,12 @@ function showNextQuestion() {
 
 // 显示结果
 function showResults() {
-    // 如果需要，可以在这里移除 quiz-mode 类
-    document.body.classList.remove('quiz-mode');
-    
-    // 原有的代码保持不变
     quizScreen.classList.remove('active');
     resultsScreen.classList.add('active');
     
     // 更新结果屏幕信息
     finalScoreEl.textContent = score;
     totalScoreEl.textContent = score;
-    
-    // 根据得分显示不同消息
-    //if (score >= maxPossibleScore * 0.8) {
-    //    resultMessage.textContent = "太棒了！你的数学知识很扎实！";
-    //} else if (score >= maxPossibleScore * 0.6) {
-    //    resultMessage.textContent = "不错！但还有一些知识点需要加强。";
-    //} else {
-    //    resultMessage.textContent = "加油！建议复习一下高中数学知识。";
-    //}
 }
 
 // 更新进度
@@ -277,13 +260,13 @@ function updateProgressBar() {
 
 // 重新开始测验
 function restartQuiz() {
-    // 移除 quiz-mode 类从 body
-    document.body.classList.remove('quiz-mode');
     currentQuestionIndex = 0;
     userAnswers = new Array(questions.length).fill(null);
     score = 0;
+    
     resultsScreen.classList.remove('active');
     startScreen.classList.add('active');
+    
     updateProgress();
     updateNavigationButtons();
 }
