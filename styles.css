@@ -583,12 +583,7 @@ h1 {
     background-color: #ffb6c1;
     width: 0%;
     transition: width 0.5s ease;
-    animation: progressPulse 2s ease-in-out infinite;
-}
-
-@keyframes progressPulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
+    /* 移除了脉动效果 */
 }
 
 /* 添加多邻国风格的微交互效果 */
