@@ -1,589 +1,160 @@
-/* 日系可爱极简风格样式表 - 完整修正版 */
 :root {
-  --primary-color: #FFB6C1; /* 主色调：柔和的樱花粉 */
-  --secondary-color: #A2D2FF; /* 辅助色：宁静的婴儿蓝 */
-  --accent-color: #FF9AA2; /* 强调色：稍亮的珊瑚粉 */
-  --text-color: #5A5A5A; /* 主文字色：柔和的深灰 */
-  --background-color: #FFF9FB; /* 背景色：略带粉调的米白 */
-  --card-bg-color: #FFFFFF; /* 卡片背景色：纯白 */
-  --border-radius: 16px; /* 圆角大小 */
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 轻柔阴影 */
-  --font-stack: 'M PLUS Rounded 1c', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    /* 主色调 - 柔和甜美 */
+    --color-primary: #FFB7C5; /* 樱粉色 - 主要按钮和重点元素 */
+    --color-primary-light: #FFD9DF; /* 浅粉 - 悬浮状态 */
+    --color-primary-dark: #F8A3B2; /* 深粉 - 激活状态 */
+    
+    /* 中性色调 - 简洁干净 */
+    --color-bg: #FFF9FB; /* 极浅粉白 - 主背景 */
+    --color-surface: #FFFFFF; /* 纯白 - 卡片背景 */
+    --color-text-primary: #5A4A4F; /* 暖灰褐 - 主要文字 */
+    --color-text-secondary: #8C7B7F; /* 中灰粉 - 次要文字 */
+    --color-border: #F0E6E9; /* 浅粉灰 - 边框和分隔线 */
+    
+    /* 辅助色 - 活泼点缀 */
+    --color-accent-blue: #A3D1E8; /* 淡蓝 - 信息提示 */
+    --color-accent-yellow: #FFE9A3; /* 淡黄 - 强调内容 */
+    --color-accent-green: #C4E0C5; /* 淡绿 - 正确/成功状态 */
 }
 
-/* 基础样式重置与设置 */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+## 🧩 UI组件具体样式
+
+### 整体布局
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    line-height: 1.6;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-stack);
-  background: linear-gradient(135deg, var(--background-color) 0%, #fef5f8 100%);
-  color: var(--text-color);
-  line-height: 1.6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+/* 容器和卡片 */
+.container {
+    background-color: var(--color-surface);
+    border-radius: 16px; /* 圆角更大更可爱 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); /* 更柔和的阴影 */
+    border: 1px solid var(--color-border);
+    padding: 2rem;
 }
 
-/* 主容器样式 */
-.quiz-container {
-  width: 95%;
-  max-width: 900px;
-  min-height: auto;
-  background-color: var(--card-bg-color);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  position: relative;
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
+### 按钮样式
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: white;
+    border: none;
+    border-radius: 12px; /* 可爱的圆角 */
+    padding: 12px 24px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(255, 183, 197, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-/* 标题栏样式 */
-header {
-  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-  color: white;
-  padding: 25px 20px;
-  text-align: center;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 183, 197, 0.4);
 }
 
-header h1 {
-  font-weight: 700;
-  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
-  letter-spacing: 1px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-  margin: 0 auto;
-}
-
-/* 进度信息样式 */
-.progress-info {
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.1rem;
-  font-weight: 500;
-  width: 100%;
-  margin-top: 15px;
-}
-
-/* 屏幕样式 */
-.screen {
-  display: none;
-  width: 100%;
-  text-align: center;
-  padding: 30px;
-  min-height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.screen.active {
-  display: flex;
-  animation: fadeInUp 0.6s ease-out;
-}
-
-/* 开始屏幕样式 */
-.start-content {
-  text-align: center;
-  padding: 20px;
-  width: 100%;
-  max-width: 600px;
-}
-
-.start-content h2 {
-  color: var(--primary-color);
-  margin-bottom: 15px;
-  font-size: clamp(1.5rem, 3vw, 1.8rem);
-}
-
-.start-content p {
-  color: #666;
-  margin-bottom: 30px;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-.quiz-info {
-  list-style: none;
-  margin: 25px 0;
-  text-align: left;
-  display: inline-block;
-  background-color: #f5f9ff;
-  padding: 20px;
-  border-radius: 10px;
-  border-left: 4px solid var(--primary-color);
-  width: 100%;
-  max-width: 400px;
-}
-
-.quiz-info li {
-  margin: 12px 0;
-  font-size: 1.1rem;
-}
-
-/* 问题容器样式 */
+### 题目和选项样式
 .question-container {
-  margin-bottom: 30px;
-  width: 100%;
-  max-width: 700px;
-}
-
-.question-header {
-  margin-bottom: 25px;
-}
-
-#question-text {
-  font-size: clamp(1.2rem, 2vw, 1.4rem);
-  line-height: 1.6;
-  color: #333;
-  margin-bottom: 20px;
-  padding: 15px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  border-left: 4px solid var(--primary-color);
-  text-align: left;
-}
-
-/* 选项容器样式 */
-.options-container {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 25px;
-  width: 100%;
+    background: var(--color-surface);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0;
 }
 
 .option {
-  padding: 16px 20px;
-  border: 2px solid #e0e0e0;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 1.05rem;
-  background-color: #f9f9f9;
-  display: flex;
-  align-items: center;
-  text-align: left;
-  width: 100%;
+    background: var(--color-bg);
+    border: 2px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    transition: all 0.2s ease;
+    cursor: pointer;
 }
 
 .option:hover {
-  border-color: var(--primary-color);
-  background-color: #f0f8f0;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    border-color: var(--color-primary-light);
+    transform: scale(1.02);
 }
 
 .option.selected {
-  border-color: var(--primary-color);
-  background-color: #e8f5e9;
-  font-weight: bold;
+    border-color: var(--color-primary);
+    background-color: rgba(255, 183, 197, 0.1);
+    box-shadow: 0 2px 8px rgba(255, 183, 197, 0.2);
 }
 
-.option.correct {
-  border-color: #4CAF50;
-  background-color: #e8f5e9;
-}
-
-.option.incorrect {
-  border-color: #f44336;
-  background-color: #ffebee;
-}
-
-.option-letter {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
-  background-color: var(--primary-color);
-  color: white;
-  border-radius: 50%;
-  margin-right: 15px;
-  font-weight: bold;
-}
-
-/* 答案与解析样式 */
-.answer-explanation {
-  margin-top: 25px;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #f0f7ff;
-  border-left: 4px solid var(--secondary-color);
-  width: 100%;
-  text-align: left;
-}
-
-.answer-explanation h3 {
-  color: var(--secondary-color);
-  margin-bottom: 15px;
-  font-size: 1.3rem;
-}
-
-.answer-feedback p {
-  margin-bottom: 10px;
-  line-height: 1.6;
-}
-
-#correct-indicator.correct {
-  color: #4CAF50;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-#correct-indicator.incorrect {
-  color: #f44336;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-/* 导航按钮样式 */
-.navigation {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  margin-top: 30px;
-  width: 100%;
-  max-width: 500px;
-}
-
-.btn {
-  padding: 14px 28px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.05rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-}
-
-.btn.primary {
-  background: linear-gradient(135deg, var(--primary-color) 0%, #FF9AA2 100%);
-  color: white;
-}
-
-.btn.primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 7px 14px rgba(76, 175, 80, 0.3);
-}
-
-.btn.secondary {
-  background-color: #f0f0f0;
-  color: #333;
-}
-
-.btn.secondary:hover {
-  background-color: #e0e0e0;
-}
-
-.btn.success {
-  background: linear-gradient(135deg, var(--secondary-color) 0%, #6BB5FF 100%);
-  color: white;
-}
-
-.btn.success:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 7px 14px rgba(33, 150, 243, 0.3);
-}
-
-/* 结果屏幕样式 */
-.results-content {
-  text-align: center;
-  width: 100%;
-  max-width: 600px;
-}
-
-.score-summary {
-  margin: 30px 0;
-}
-
-.score-circle {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary-color) 0%, #FF9AA2 100%);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto 25px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.score-circle span {
-  font-size: 3.5rem;
-  font-weight: bold;
-  line-height: 1;
-}
-
-.score-circle small {
-  font-size: 1.2rem;
-  margin-top: 5px;
-}
-
-/* 打赏区域样式 */
-.donation-section {
-  margin: 40px 0;
-  padding: 25px;
-  background: linear-gradient(135deg, #fff9e6 0%, #fff3cc 100%);
-  border-radius: 15px;
-  border: 2px dashed #FFC107;
-  text-align: center;
-  width: 100%;
-  max-width: 500px;
-}
-
-.donation-text {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.qr-code {
-  max-width: 250px;
-  margin: 0 auto;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: white;
-}
-
-.qr-code img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* 操作按钮区域 */
-.action-buttons {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  margin-top: 30px;
-  width: 100%;
-  max-width: 400px;
-}
-
-/* 隐藏类 */
-.hidden {
-  display: none !important;
-}
-
-/* 动画定义 */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 响应式设计：平板和移动设备 */
-@media (max-width: 768px) {
-  html, body {
-    padding: 10px;
-    display: block;
-    height: auto;
-    min-height: 100vh;
-  }
-  
-  .quiz-container {
-    width: 100%;
-    margin: 10px auto;
-    border-radius: 12px;
-  }
-  
-  header {
-    padding: 20px 15px;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  header h1 {
-    font-size: 1.8rem;
-    order: 1;
-  }
-  
-  .progress-info {
-    order: 2;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-  }
-  
-  .screen {
-    padding: 20px;
-    min-height: auto;
-  }
-  
-  .question-container {
-    margin-bottom: 20px;
-  }
-  
-  #question-text {
-    font-size: 1.2rem;
-    padding: 12px;
-  }
-  
-  .option {
-    padding: 14px 16px;
-    font-size: 1rem;
-  }
-  
-  .navigation {
-    flex-direction: column;
-  }
-  
-  .btn {
-    padding: 12px 24px;
-  }
-  
-  .score-circle {
-    width: 150px;
-    height: 150px;
-  }
-  
-  .score-circle span {
-    font-size: 2.8rem;
-  }
-  
-  .donation-text {
-    font-size: 1.1rem;
-  }
-  
-  .action-buttons {
-    flex-direction: column;
-  }
-}
-
-/* 小屏幕手机适配 */
-@media (max-width: 480px) {
-  .quiz-container {
-    margin: 5px auto;
-  }
-  
-  .screen {
-    padding: 15px 10px;
-  }
-  
-  header {
-    padding: 15px 10px;
-  }
-  
-  header h1 {
-    font-size: 1.5rem;
-  }
-  
-  .start-content h2 {
-    font-size: 1.3rem;
-  }
-  
-  .quiz-info {
-    padding: 15px;
-  }
-  
-  .quiz-info li {
-    font-size: 1rem;
-  }
-  
-  #question-text {
-    font-size: 1.1rem;
-    line-height: 1.4;
-  }
-  
-  .option {
-    padding: 12px 14px;
-  }
-  
-  .option-letter {
-    width: 25px;
-    height: 25px;
-    margin-right: 10px;
-  }
-  
-  .btn {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-  
-  .score-circle {
-    width: 130px;
-    height: 130px;
-  }
-  
-  .score-circle span {
-    font-size: 2.5rem;
-  }
-  
-  .donation-section {
-    padding: 20px;
-  }
-  
-  .donation-text {
-    font-size: 1rem;
-  }
-}
-
-/* 特大屏幕适配 */
-@media (min-width: 1200px) {
-  .quiz-container {
-    max-width: 1000px;
-  }
-}
-
-/* 防止内容溢出 */
-* {
-  max-width: 100%;
-}
-
-img, video, iframe {
-  max-width: 100%;
-  height: auto;
-}
-
-/* 数学公式样式 */
-.math-formula {
-  font-family: 'Times New Roman', Times, serif;
-  font-style: italic;
-  margin: 5px 0;
-}
-
-/* 进度条样式 */
+### 进度和得分显示
 .progress-bar {
-  height: 8px;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
-  margin: 20px 0;
-  overflow: hidden;
-  width: 100%;
-  max-width: 500px;
+    background-color: var(--color-border);
+    border-radius: 10px;
+    height: 8px;
+    overflow: hidden;
 }
 
-.progress {
-  height: 100%;
-  background-color: var(--primary-color);
-  width: 0%;
-  transition: width 0.5s ease;
+.progress-fill {
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent-blue));
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.score-display {
+    background: var(--color-surface);
+    border: 2px solid var(--color-border);
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    color: var(--color-primary-dark);
+}
+
+## ✨ 可爱细节增强
+
+### 图标和装饰
+.cute-icon {
+    color: var(--color-primary);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* 添加一些可爱的形状装饰 */
+.decoration-circle {
+    width: 60px;
+    height: 60px;
+    background: var(--color-accent-yellow);
+    border-radius: 50%;
+    opacity: 0.1;
+    position: absolute;
+    z-index: -1;
+}
+
+### 动画效果
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.cute-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+## 📱 响应式调整
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+    
+    .option {
+        padding: 0.8rem;
+    }
 }
