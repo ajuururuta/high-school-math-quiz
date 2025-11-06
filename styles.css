@@ -296,7 +296,7 @@ h1 {
     background-color: #ffb6c1;
     color: white;
     border-radius: 50%;
-    margin-right: 5px;
+    margin-right: 30px;
     font-weight: bold;
     animation: letterFloat 3.2s ease-in-out infinite;
 }
@@ -492,7 +492,7 @@ h1 {
     border-radius: 50%;
     background: linear-gradient(135deg, #ff9eb5, #ffb6c1, #a6c1ff);
     z-index: -1;
-    animation: scoreRotate 10s linear infinite;
+    animation: scoreRotate 15s linear infinite;
 }
 
 @keyframes scoreRotate {
