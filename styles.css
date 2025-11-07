@@ -107,38 +107,21 @@ header {
     overflow: hidden;
 }
 
-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-    animation: headerShimmer 4s ease-in-out infinite;
-}
+/* 移除header的shimmer效果 */
+/* header::before 选择器及相关动画已删除 */
 
 h1 {
     font-size: 2.4rem;
     margin-bottom: 12px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    animation: titleGlow 3s ease-in-out infinite;
+    /* 移除titleGlow动画 */
     background: linear-gradient(135deg, #ffffff, #f0f0ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-@keyframes titleGlow {
-    0%, 100% { 
-        transform: scale(1);
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    }
-    50% { 
-        transform: scale(1.02);
-        text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
-    }
-}
+/* 移除titleGlow关键帧动画 */
 
 .progress-info {
     display: flex;
@@ -181,20 +164,7 @@ h1 {
     color: #7c3aed;
     margin-bottom: 20px;
     font-size: 2rem;
-    animation: gentlePulse 4s ease-in-out infinite;
-}
-
-@keyframes gentlePulse {
-    0%, 100% { 
-        opacity: 1;
-        transform: scale(1);
-        color: #7c3aed;
-    }
-    50% { 
-        opacity: 0.9;
-        transform: scale(1.03);
-        color: #8b5cf6;
-    }
+    /* 移除gentlePulse动画 */
 }
 
 .start-content p {
@@ -703,27 +673,6 @@ h1 {
 @keyframes progressPulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.85; }
-}
-
-/* 多巴胺风格装饰粒子 */
-@keyframes confetti {
-    0% { 
-        transform: translateY(-100px) rotate(0deg); 
-        opacity: 1;
-    }
-    100% { 
-        transform: translateY(100vh) rotate(360deg); 
-        opacity: 0;
-    }
-}
-
-.confetti {
-    position: fixed;
-    width: 8px;
-    height: 8px;
-    animation: confetti 4s ease-in-out forwards;
-    pointer-events: none;
-    z-index: 1000;
 }
 
 /* 响应式设计 */
