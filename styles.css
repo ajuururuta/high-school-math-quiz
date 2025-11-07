@@ -13,7 +13,7 @@ body {
     align-items: center;
     padding: 20px;
     color: #37474f;
-    animation: gentleGradientShift 20s ease-in-out infinite; /* 延长动画时间使切换更平滑 */
+    animation: gentleGradientShift 20s ease-in-out infinite;
 }
 
 @keyframes gentleGradientShift {
@@ -54,7 +54,6 @@ body {
     }
 }
 
-/* 主色调装饰元素 */
 .quiz-container::before {
     content: '';
     position: absolute;
@@ -62,7 +61,7 @@ body {
     right: -20px;
     width: 80px;
     height: 80px;
-    background: #1e90ff; /* 改为纯色 */
+    background: #1e90ff;
     border-radius: 50%;
     opacity: 0.1;
     z-index: 0;
@@ -76,7 +75,7 @@ body {
     left: -30px;
     width: 100px;
     height: 100px;
-    background: #1e90ff; /* 改为纯色 */
+    background: #1e90ff;
     border-radius: 50%;
     opacity: 0.08;
     z-index: 0;
@@ -99,7 +98,7 @@ body {
 }
 
 header {
-    background: #1e90ff; /* 改为纯色 */
+    background: #1e90ff;
     color: #ffffff;
     padding: 30px 25px;
     text-align: center;
@@ -169,7 +168,7 @@ h1 {
     margin: 30px 0;
     text-align: left;
     display: inline-block;
-    background: #f8f9fa; /* 改为纯色 */
+    background: #f8f9fa;
     padding: 25px;
     border-radius: 12px;
     border-left: 5px solid #1e90ff;
@@ -243,7 +242,7 @@ h1 {
     color: #37474f;
     margin-bottom: 25px;
     padding: 20px;
-    background: #f8f9fa; /* 改为纯色 */
+    background: #f8f9fa;
     border-radius: 12px;
     border-left: 5px solid #1e90ff;
     animation: textFocus 4s ease-in-out infinite;
@@ -274,7 +273,7 @@ h1 {
     cursor: pointer;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     font-size: 1.1rem;
-    background: #ffffff; /* 改为纯色 */
+    background: #ffffff;
     display: flex;
     align-items: center;
     position: relative;
@@ -298,14 +297,14 @@ h1 {
 
 .option:hover {
     border-color: #1e90ff;
-    background: #f0f4ff; /* 改为纯色 */
+    background: #f0f4ff;
     transform: translateY(-4px) scale(1.02);
     box-shadow: 0 10px 25px rgba(30, 144, 255, 0.15);
 }
 
 .option.selected {
     border-color: #1e90ff;
-    background: #e3f2fd; /* 改为纯色 */
+    background: #e3f2fd;
     font-weight: 600;
     animation: selectPulse 0.6s ease-out;
 }
@@ -318,7 +317,7 @@ h1 {
 
 .option.correct {
     border-color: #4caf50;
-    background: #e8f5e9; /* 改为纯色 */
+    background: #e8f5e9;
     animation: correctBounce 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -330,7 +329,7 @@ h1 {
 
 .option.incorrect {
     border-color: #f44336;
-    background: #ffebee; /* 改为纯色 */
+    background: #ffebee;
     animation: incorrectShake 0.7s ease-out;
 }
 
@@ -346,7 +345,7 @@ h1 {
     align-items: center;
     width: 35px;
     height: 35px;
-    background: #1e90ff; /* 改为纯色，移除渐变 */
+    background: #1e90ff;
     color: white;
     border-radius: 50%;
     margin-right: 18px;
@@ -405,7 +404,7 @@ h1 {
 }
 
 .btn.primary {
-    background: #1e90ff; /* 改为纯色 */
+    background: #1e90ff;
     color: white;
     box-shadow: 0 6px 20px rgba(30, 144, 255, 0.3);
 }
@@ -426,18 +425,18 @@ h1 {
 }
 
 .btn.secondary {
-    background: #f3f4f6; /* 改为纯色 */
+    background: #f3f4f6;
     color: #546e7a;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .btn.secondary:hover {
-    background: #e5e7eb; /* 改为纯色 */
+    background: #e5e7eb;
     transform: translateY(-3px) scale(1.03);
 }
 
 .btn.success {
-    background: #ffeb3b; /* 改为纯色 */
+    background: #ffeb3b;
     color: #5d4037;
     box-shadow: 0 6px 20px rgba(255, 235, 59, 0.3);
 }
@@ -447,14 +446,39 @@ h1 {
     box-shadow: 0 12px 30px rgba(255, 235, 59, 0.4);
 }
 
+/* 答案与解析部分 - 已修改为淡粉色和亮黄色渐变 */
 .answer-explanation {
     margin-top: 30px;
     padding: 25px;
     border-radius: 12px;
-    background: #f0f7ff; /* 改为纯色 */
-    border-left: 5px solid #1e90ff;
+    background: linear-gradient(135deg, #ffe6e6 0%, #fff9e6 100%); /* 淡粉色到亮黄色渐变 */
+    border-left: 5px solid #ffb6c1; /* 淡粉色边框 */
     animation: explanationReveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 5px 15px rgba(30, 144, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.2); /* 淡粉色阴影 */
+    position: relative;
+    overflow: hidden;
+}
+
+.answer-explanation::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ffb6c1, #ffd966, #ffb6c1);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { 
+        transform: translateX(-100%);
+        opacity: 0.7;
+    }
+    50% { 
+        transform: translateX(100%);
+        opacity: 1;
+    }
 }
 
 @keyframes explanationReveal {
@@ -469,9 +493,10 @@ h1 {
 }
 
 .answer-explanation h3 {
-    color: #1a5fff;
+    color: #d2368f; /* 深粉色标题 */
     margin-bottom: 18px;
     font-size: 1.4rem;
+    text-shadow: 1px 1px 2px rgba(255, 182, 193, 0.3);
 }
 
 .answer-feedback {
@@ -482,6 +507,7 @@ h1 {
     margin-bottom: 12px;
     line-height: 1.7;
     font-size: 1.1rem;
+    color: #5d4037; /* 深棕色文字，保证可读性 */
 }
 
 #correct-indicator {
@@ -489,6 +515,9 @@ h1 {
     font-size: 1.3rem;
     margin-bottom: 15px;
     animation: fadeInUp 0.8s ease-out;
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: inline-block;
 }
 
 @keyframes fadeInUp {
@@ -504,10 +533,14 @@ h1 {
 
 #correct-indicator.correct {
     color: #4caf50;
+    background-color: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
 }
 
 #correct-indicator.incorrect {
     color: #f44336;
+    background-color: rgba(244, 67, 54, 0.1);
+    border: 1px solid rgba(244, 67, 54, 0.3);
 }
 
 .hidden {
@@ -538,7 +571,7 @@ h1 {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: #1e90ff; /* 改为纯色 */
+    background: #1e90ff;
     color: white;
     display: flex;
     flex-direction: column;
@@ -546,7 +579,6 @@ h1 {
     align-items: center;
     margin: 0 auto 30px;
     box-shadow: 0 15px 30px rgba(30, 144, 255, 0.3);
-    /* 移除放大缩小动画 */
     position: relative;
 }
 
@@ -584,7 +616,7 @@ h1 {
 .donation-section {
     margin: 45px 0;
     padding: 30px;
-    background: #fff7ed; /* 改为纯色 */
+    background: #fff7ed;
     border-radius: 15px;
     border: 2px dashed #ff9800;
     text-align: center;
@@ -641,7 +673,7 @@ h1 {
 
 .progress {
     height: 100%;
-    background: #1e90ff; /* 改为纯色 */
+    background: #1e90ff;
     width: 0%;
     transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -697,5 +729,14 @@ h1 {
     .quiz-container::before,
     .quiz-container::after {
         display: none;
+    }
+    
+    .answer-explanation {
+        padding: 20px;
+        margin-top: 25px;
+    }
+    
+    .answer-explanation h3 {
+        font-size: 1.3rem;
     }
 }
