@@ -6,7 +6,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, #e3f2fd 0%, #fce4ec 100%);
+    background: #f0f4ff; /* 改为纯色背景，原渐变背景已移除 */
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -18,23 +18,23 @@ body {
 
 @keyframes gentleGradientShift {
     0%, 100% { 
-        background: linear-gradient(135deg, #e3f2fd 0%, #fce4ec 100%); 
+        background: #f0f4ff; /* 纯色背景 */
     }
     33% { 
-        background: linear-gradient(135deg, #fce4ec 0%, #fff9c4 100%); 
+        background: #f8f0ff; /* 纯色背景 */
     }
     66% { 
-        background: linear-gradient(135deg, #fff9c4 0%, #e3f2fd 100%); 
+        background: #f0fff8; /* 纯色背景 */
     }
 }
 
 .quiz-container {
     width: 100%;
     max-width: 900px;
-    background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+    background: #ffffff; /* 改为纯白色背景 */
     border-radius: 20px;
     box-shadow: 
-        0 20px 40px rgba(33, 150, 243, 0.15),
+        0 20px 40px rgba(51, 102, 255, 0.15), /* 使用新蓝色 */
         0 8px 16px rgba(255, 193, 7, 0.1),
         0 0 0 1px rgba(255, 255, 255, 0.9);
     overflow: hidden;
@@ -46,11 +46,11 @@ body {
 @keyframes containerFloat {
     0%, 100% { 
         transform: translateY(0px) rotate(0deg); 
-        box-shadow: 0 20px 40px rgba(33, 150, 243, 0.15);
+        box-shadow: 0 20px 40px rgba(51, 102, 255, 0.15); /* 使用新蓝色 */
     }
     50% { 
         transform: translateY(-6px) rotate(0.4deg);
-        box-shadow: 0 25px 50px rgba(33, 150, 243, 0.2);
+        box-shadow: 0 25px 50px rgba(51, 102, 255, 0.2); /* 使用新蓝色 */
     }
 }
 
@@ -62,7 +62,7 @@ body {
     right: -20px;
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, #2196f3, #e91e63);
+    background: #3366ff; /* 改为纯色新蓝色 */
     border-radius: 50%;
     opacity: 0.1;
     z-index: 0;
@@ -76,7 +76,7 @@ body {
     left: -30px;
     width: 100px;
     height: 100px;
-    background: linear-gradient(135deg, #ffeb3b, #2196f3);
+    background: #3366ff; /* 改为纯色新蓝色 */
     border-radius: 50%;
     opacity: 0.08;
     z-index: 0;
@@ -99,7 +99,7 @@ body {
 }
 
 header {
-    background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+    background: linear-gradient(135deg, #3366ff 0%, #1a5fff 100%); /* 使用新蓝色 */
     color: #ffffff;
     padding: 30px 25px;
     text-align: center;
@@ -155,7 +155,7 @@ h1 {
 }
 
 .start-content h2 {
-    color: #2196f3;
+    color: #3366ff; /* 使用新蓝色 */
     margin-bottom: 20px;
     font-size: 2rem;
 }
@@ -172,12 +172,12 @@ h1 {
     margin: 30px 0;
     text-align: left;
     display: inline-block;
-    background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+    background: #f8f9fa; /* 改为纯色背景 */
     padding: 25px;
     border-radius: 12px;
-    border-left: 5px solid #2196f3;
+    border-left: 5px solid #3366ff; /* 使用新蓝色 */
     animation: infoSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 5px 15px rgba(33, 150, 243, 0.1);
+    box-shadow: 0 5px 15px rgba(51, 102, 255, 0.1); /* 使用新蓝色 */
 }
 
 @keyframes infoSlideUp {
@@ -194,11 +194,11 @@ h1 {
 .quiz-info li {
     margin: 15px 0;
     font-size: 1.15rem;
-    color: #1976d2;
+    color: #3366ff; /* 使用新蓝色 */
     animation: listItemStagger 0.6s ease-out;
     animation-fill-mode: both;
     padding: 8px 0;
-    border-bottom: 1px solid rgba(33, 150, 243, 0.1);
+    border-bottom: 1px solid rgba(51, 102, 255, 0.1); /* 使用新蓝色 */
 }
 
 .quiz-info li:last-child {
@@ -246,21 +246,21 @@ h1 {
     color: #37474f;
     margin-bottom: 25px;
     padding: 20px;
-    background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+    background: #f8f9fa; /* 改为纯色背景 */
     border-radius: 12px;
-    border-left: 5px solid #2196f3;
+    border-left: 5px solid #3366ff; /* 使用新蓝色 */
     animation: textFocus 4s ease-in-out infinite;
-    box-shadow: 0 5px 15px rgba(33, 150, 243, 0.08);
+    box-shadow: 0 5px 15px rgba(51, 102, 255, 0.08); /* 使用新蓝色 */
 }
 
 @keyframes textFocus {
     0%, 100% { 
-        box-shadow: 0 5px 15px rgba(33, 150, 243, 0.08);
-        border-left-color: #2196f3;
+        box-shadow: 0 5px 15px rgba(51, 102, 255, 0.08); /* 使用新蓝色 */
+        border-left-color: #3366ff; /* 使用新蓝色 */
     }
     50% { 
-        box-shadow: 0 8px 25px rgba(33, 150, 243, 0.15);
-        border-left-color: #1976d2;
+        box-shadow: 0 8px 25px rgba(51, 102, 255, 0.15); /* 使用新蓝色 */
+        border-left-color: #1a5fff; /* 使用新蓝色 */
     }
 }
 
@@ -272,12 +272,12 @@ h1 {
 
 .option {
     padding: 18px 22px;
-    border: 2px solid #e1f5fe;
+    border: 2px solid #e1e6eb;
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     font-size: 1.1rem;
-    background: linear-gradient(135deg, #ffffff, #fcfcfc);
+    background: #ffffff; /* 改为纯白色背景 */
     display: flex;
     align-items: center;
     position: relative;
@@ -291,7 +291,7 @@ h1 {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(33, 150, 243, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(51, 102, 255, 0.1), transparent); /* 使用新蓝色 */
     transition: left 0.8s;
 }
 
@@ -300,15 +300,15 @@ h1 {
 }
 
 .option:hover {
-    border-color: #2196f3;
-    background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+    border-color: #3366ff; /* 使用新蓝色 */
+    background: #f0f4ff; /* 改为纯色背景 */
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 10px 25px rgba(33, 150, 243, 0.15);
+    box-shadow: 0 10px 25px rgba(51, 102, 255, 0.15); /* 使用新蓝色 */
 }
 
 .option.selected {
-    border-color: #2196f3;
-    background: linear-gradient(135deg, #bbdefb, #e1bee7);
+    border-color: #3366ff; /* 使用新蓝色 */
+    background: #e3f2fd; /* 改为纯色背景 */
     font-weight: 600;
     animation: selectPulse 0.6s ease-out;
 }
@@ -321,7 +321,7 @@ h1 {
 
 .option.correct {
     border-color: #4caf50;
-    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    background: #e8f5e9; /* 改为纯色背景 */
     animation: correctBounce 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -333,7 +333,7 @@ h1 {
 
 .option.incorrect {
     border-color: #f44336;
-    background: linear-gradient(135deg, #ffebee, #ffcdd2);
+    background: #ffebee; /* 改为纯色背景 */
     animation: incorrectShake 0.7s ease-out;
 }
 
@@ -349,23 +349,23 @@ h1 {
     align-items: center;
     width: 35px;
     height: 35px;
-    background: linear-gradient(135deg, #2196f3, #ffeb3b);
-    color: #1976d2;
+    background: #3366ff; /* 改为纯色新蓝色 */
+    color: white;
     border-radius: 50%;
     margin-right: 18px;
     font-weight: bold;
     animation: letterBounce 4s ease-in-out infinite;
-    box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+    box-shadow: 0 4px 8px rgba(51, 102, 255, 0.3); /* 使用新蓝色 */
 }
 
 @keyframes letterBounce {
     0%, 100% { 
         transform: translateY(0) rotate(0deg);
-        background: linear-gradient(135deg, #2196f3, #ffeb3b);
+        background: #3366ff; /* 改为纯色新蓝色 */
     }
     50% { 
         transform: translateY(-4px) rotate(5deg);
-        background: linear-gradient(135deg, #ffeb3b, #2196f3);
+        background: #1a5fff; /* 改为纯色新蓝色 */
     }
 }
 
@@ -410,56 +410,56 @@ h1 {
 }
 
 .btn.primary {
-    background: linear-gradient(135deg, #2196f3, #1976d2);
+    background: linear-gradient(135deg, #3366ff, #1a5fff); /* 使用新蓝色 */
     color: white;
-    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3);
+    box-shadow: 0 6px 20px rgba(51, 102, 255, 0.3); /* 使用新蓝色 */
 }
 
 .btn.primary:hover {
     transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 12px 30px rgba(33, 150, 243, 0.4);
+    box-shadow: 0 12px 30px rgba(51, 102, 255, 0.4); /* 使用新蓝色 */
     animation: btnGlow 2s ease-in-out infinite;
 }
 
 @keyframes btnGlow {
     0%, 100% { 
-        box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3);
+        box-shadow: 0 6px 20px rgba(51, 102, 255, 0.3); /* 使用新蓝色 */
     }
     50% { 
-        box-shadow: 0 8px 25px rgba(33, 150, 243, 0.5);
+        box-shadow: 0 8px 25px rgba(51, 102, 255, 0.5); /* 使用新蓝色 */
     }
 }
 
 .btn.secondary {
-    background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+    background: #f3f4f6; /* 改为纯色背景 */
     color: #546e7a;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .btn.secondary:hover {
-    background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+    background: #e5e7eb; /* 改为纯色背景 */
     transform: translateY(-3px) scale(1.03);
 }
 
 .btn.success {
-    background: linear-gradient(135deg, #ffeb3b, #fbc02d);
-    color: #5d4037;
-    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.3);
+    background: linear-gradient(135deg, #3366ff, #1a5fff); /* 使用新蓝色 */
+    color: white;
+    box-shadow: 0 6px 20px rgba(51, 102, 255, 0.3); /* 使用新蓝色 */
 }
 
 .btn.success:hover {
     transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 12px 30px rgba(255, 193, 7, 0.4);
+    box-shadow: 0 12px 30px rgba(51, 102, 255, 0.4); /* 使用新蓝色 */
 }
 
 .answer-explanation {
     margin-top: 30px;
     padding: 25px;
     border-radius: 12px;
-    background: linear-gradient(135deg, #e3f2fd, #fff9c4);
-    border-left: 5px solid #2196f3;
+    background: #f0f7ff; /* 改为纯色背景 */
+    border-left: 5px solid #3366ff; /* 使用新蓝色 */
     animation: explanationReveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 5px 15px rgba(33, 150, 243, 0.1);
+    box-shadow: 0 5px 15px rgba(51, 102, 255, 0.1); /* 使用新蓝色 */
 }
 
 @keyframes explanationReveal {
@@ -474,7 +474,7 @@ h1 {
 }
 
 .answer-explanation h3 {
-    color: #1976d2;
+    color: #3366ff; /* 使用新蓝色 */
     margin-bottom: 18px;
     font-size: 1.4rem;
 }
@@ -543,14 +543,14 @@ h1 {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #2196f3, #e91e63);
+    background: linear-gradient(135deg, #3366ff, #1a5fff); /* 使用新蓝色 */
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0 auto 30px;
-    box-shadow: 0 15px 30px rgba(33, 150, 243, 0.3);
+    box-shadow: 0 15px 30px rgba(51, 102, 255, 0.3); /* 使用新蓝色 */
     animation: scorePulse 3s ease-in-out infinite;
     position: relative;
 }
@@ -563,7 +563,7 @@ h1 {
     right: -8px;
     bottom: -8px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #2196f3, #e91e63, #ffeb3b);
+    background: linear-gradient(135deg, #3366ff, #1a5fff, #ffeb3b); /* 使用新蓝色 */
     z-index: -1;
     animation: scoreRotate 6s linear infinite;
     opacity: 0.7;
@@ -577,11 +577,11 @@ h1 {
 @keyframes scorePulse {
     0%, 100% { 
         transform: scale(1);
-        box-shadow: 0 15px 30px rgba(33, 150, 243, 0.3);
+        box-shadow: 0 15px 30px rgba(51, 102, 255, 0.3); /* 使用新蓝色 */
     }
     50% { 
         transform: scale(1.08);
-        box-shadow: 0 20px 40px rgba(33, 150, 243, 0.4);
+        box-shadow: 0 20px 40px rgba(51, 102, 255, 0.4); /* 使用新蓝色 */
     }
 }
 
@@ -600,7 +600,7 @@ h1 {
 .donation-section {
     margin: 45px 0;
     padding: 30px;
-    background: linear-gradient(135deg, #fff9c4, #ffecb3);
+    background: #fff7ed; /* 改为纯色背景 */
     border-radius: 15px;
     border: 2px dashed #ff9800;
     text-align: center;
@@ -657,7 +657,7 @@ h1 {
 
 .progress {
     height: 100%;
-    background: linear-gradient(135deg, #2196f3, #ffeb3b);
+    background: linear-gradient(135deg, #3366ff, #1a5fff); /* 使用新蓝色 */
     width: 0%;
     transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation: progressPulse 3s ease-in-out infinite;
