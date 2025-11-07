@@ -13,7 +13,7 @@ body {
     align-items: center;
     padding: 20px;
     color: #37474f;
-    animation: gentleGradientShift 15s ease-in-out infinite;
+    animation: gentleGradientShift 20s ease-in-out infinite; /* 延长动画时间使切换更平滑 */
 }
 
 @keyframes gentleGradientShift {
@@ -34,7 +34,7 @@ body {
     background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
     border-radius: 20px;
     box-shadow: 
-        0 20px 40px rgba(30, 144, 255, 0.15), /* 使用更鲜艳的蓝色 */
+        0 20px 40px rgba(30, 144, 255, 0.15),
         0 8px 16px rgba(255, 193, 7, 0.1),
         0 0 0 1px rgba(255, 255, 255, 0.9);
     overflow: hidden;
@@ -46,17 +46,60 @@ body {
 @keyframes containerFloat {
     0%, 100% { 
         transform: translateY(0px) rotate(0deg); 
-        box-shadow: 0 20px 40px rgba(30, 144, 255, 0.15); 
+        box-shadow: 0 20px 40px rgba(30, 144, 255, 0.15);
     }
     50% { 
         transform: translateY(-6px) rotate(0.4deg);
-        box-shadow: 0 25px 50px rgba(30, 144, 255, 0.2); 
+        box-shadow: 0 25px 50px rgba(30, 144, 255, 0.2);
     }
 }
 
-/* 标题样式 - 改为朴素样式 */
+/* 主色调装饰元素 */
+.quiz-container::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 80px;
+    height: 80px;
+    background: #1e90ff; /* 改为纯色 */
+    border-radius: 50%;
+    opacity: 0.1;
+    z-index: 0;
+    animation: decorFloat 6s ease-in-out infinite;
+}
+
+.quiz-container::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 100px;
+    height: 100px;
+    background: #1e90ff; /* 改为纯色 */
+    border-radius: 50%;
+    opacity: 0.08;
+    z-index: 0;
+    animation: decorFloat 8s ease-in-out infinite 2s;
+}
+
+@keyframes decorFloat {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 0.08;
+    }
+    33% { 
+        transform: translate(10px, -10px) scale(1.1) rotate(120deg);
+        opacity: 0.12;
+    }
+    66% { 
+        transform: translate(-5px, 5px) scale(0.9) rotate(240deg);
+        opacity: 0.06;
+    }
+}
+
 header {
-    background: #1e90ff; /* 使用纯色代替渐变，更鲜艳的蓝色 */
+    background: #1e90ff; /* 改为纯色 */
     color: #ffffff;
     padding: 30px 25px;
     text-align: center;
@@ -64,20 +107,18 @@ header {
     overflow: hidden;
 }
 
-/* 标题文字样式 */
 h1 {
     font-size: 2.4rem;
     margin-bottom: 12px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* 减少阴影效果，更朴素 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     font-weight: 600;
-    letter-spacing: 0.5px;
 }
 
 .progress-info {
     display: flex;
     justify-content: space-between;
     font-size: 1.1rem;
-    font-weight: 500;
+    font-weight: 600;
     opacity: 0.95;
 }
 
@@ -111,7 +152,7 @@ h1 {
 }
 
 .start-content h2 {
-    color: #1e90ff; /* 使用更鲜艳的蓝色 */
+    color: #1e90ff;
     margin-bottom: 20px;
     font-size: 2rem;
 }
@@ -128,12 +169,12 @@ h1 {
     margin: 30px 0;
     text-align: left;
     display: inline-block;
-    background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+    background: #f8f9fa; /* 改为纯色 */
     padding: 25px;
     border-radius: 12px;
-    border-left: 5px solid #1e90ff; /* 使用更鲜艳的蓝色 */
+    border-left: 5px solid #1e90ff;
     animation: infoSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 5px 15px rgba(30, 144, 255, 0.1); /* 使用更鲜艳的蓝色 */
+    box-shadow: 0 5px 15px rgba(30, 144, 255, 0.1);
 }
 
 @keyframes infoSlideUp {
@@ -150,11 +191,11 @@ h1 {
 .quiz-info li {
     margin: 15px 0;
     font-size: 1.15rem;
-    color: #1a5fff; /* 使用更鲜艳的蓝色 */
+    color: #1a5fff;
     animation: listItemStagger 0.6s ease-out;
     animation-fill-mode: both;
     padding: 8px 0;
-    border-bottom: 1px solid rgba(30, 144, 255, 0.1); /* 使用更鲜艳的蓝色 */
+    border-bottom: 1px solid rgba(30, 144, 255, 0.1);
 }
 
 .quiz-info li:last-child {
@@ -202,21 +243,21 @@ h1 {
     color: #37474f;
     margin-bottom: 25px;
     padding: 20px;
-    background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+    background: #f8f9fa; /* 改为纯色 */
     border-radius: 12px;
-    border-left: 5px solid #1e90ff; /* 使用更鲜艳的蓝色 */
+    border-left: 5px solid #1e90ff;
     animation: textFocus 4s ease-in-out infinite;
-    box-shadow: 0 5px 15px rgba(30, 144, 255, 0.08); /* 使用更鲜艳的蓝色 */
+    box-shadow: 0 5px 15px rgba(30, 144, 255, 0.08);
 }
 
 @keyframes textFocus {
     0%, 100% { 
-        box-shadow: 0 5px 15px rgba(30, 144, 255, 0.08); 
-        border-left-color: #1e90ff; 
+        box-shadow: 0 5px 15px rgba(30, 144, 255, 0.08);
+        border-left-color: #1e90ff;
     }
     50% { 
-        box-shadow: 0 8px 25px rgba(30, 144, 255, 0.15); 
-        border-left-color: #1a5fff; 
+        box-shadow: 0 8px 25px rgba(30, 144, 255, 0.15);
+        border-left-color: #1a5fff;
     }
 }
 
@@ -233,7 +274,7 @@ h1 {
     cursor: pointer;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     font-size: 1.1rem;
-    background: linear-gradient(135deg, #ffffff, #fcfcfc);
+    background: #ffffff; /* 改为纯色 */
     display: flex;
     align-items: center;
     position: relative;
@@ -247,7 +288,7 @@ h1 {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(30, 144, 255, 0.1), transparent); /* 使用更鲜艳的蓝色 */
+    background: linear-gradient(90deg, transparent, rgba(30, 144, 255, 0.1), transparent);
     transition: left 0.8s;
 }
 
@@ -256,15 +297,15 @@ h1 {
 }
 
 .option:hover {
-    border-color: #1e90ff; /* 使用更鲜艳的蓝色 */
-    background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+    border-color: #1e90ff;
+    background: #f0f4ff; /* 改为纯色 */
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 10px 25px rgba(30, 144, 255, 0.15); /* 使用更鲜艳的蓝色 */
+    box-shadow: 0 10px 25px rgba(30, 144, 255, 0.15);
 }
 
 .option.selected {
-    border-color: #1e90ff; /* 使用更鲜艳的蓝色 */
-    background: linear-gradient(135deg, #bbdefb, #e1bee7);
+    border-color: #1e90ff;
+    background: #e3f2fd; /* 改为纯色 */
     font-weight: 600;
     animation: selectPulse 0.6s ease-out;
 }
@@ -277,7 +318,7 @@ h1 {
 
 .option.correct {
     border-color: #4caf50;
-    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    background: #e8f5e9; /* 改为纯色 */
     animation: correctBounce 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -289,7 +330,7 @@ h1 {
 
 .option.incorrect {
     border-color: #f44336;
-    background: linear-gradient(135deg, #ffebee, #ffcdd2);
+    background: #ffebee; /* 改为纯色 */
     animation: incorrectShake 0.7s ease-out;
 }
 
@@ -305,23 +346,21 @@ h1 {
     align-items: center;
     width: 35px;
     height: 35px;
-    background: linear-gradient(135deg, #1e90ff, #00bfff); /* 使用更鲜艳的蓝色 */
+    background: #1e90ff; /* 改为纯色，移除渐变 */
     color: white;
     border-radius: 50%;
     margin-right: 18px;
     font-weight: bold;
     animation: letterBounce 4s ease-in-out infinite;
-    box-shadow: 0 4px 8px rgba(30, 144, 255, 0.3); /* 使用更鲜艳的蓝色 */
+    box-shadow: 0 4px 8px rgba(30, 144, 255, 0.3);
 }
 
 @keyframes letterBounce {
     0%, 100% { 
         transform: translateY(0) rotate(0deg);
-        background: linear-gradient(135deg, #1e90ff, #00bfff); 
     }
     50% { 
         transform: translateY(-4px) rotate(5deg);
-        background: linear-gradient(135deg, #00bfff, #1e90ff); 
     }
 }
 
@@ -365,41 +404,40 @@ h1 {
     height: 300px;
 }
 
-/* 下一题按钮使用不同的蓝色 */
 .btn.primary {
-    background: linear-gradient(135deg, #00bfff, #1e90ff); /* 更鲜艳的蓝色，与container区分 */
+    background: #1e90ff; /* 改为纯色 */
     color: white;
-    box-shadow: 0 6px 20px rgba(0, 191, 255, 0.3); /* 使用不同的蓝色 */
+    box-shadow: 0 6px 20px rgba(30, 144, 255, 0.3);
 }
 
 .btn.primary:hover {
     transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 12px 30px rgba(0, 191, 255, 0.4); /* 使用不同的蓝色 */
+    box-shadow: 0 12px 30px rgba(30, 144, 255, 0.4);
     animation: btnGlow 2s ease-in-out infinite;
 }
 
 @keyframes btnGlow {
     0%, 100% { 
-        box-shadow: 0 6px 20px rgba(0, 191, 255, 0.3); 
+        box-shadow: 0 6px 20px rgba(30, 144, 255, 0.3);
     }
     50% { 
-        box-shadow: 0 8px 25px rgba(0, 191, 255, 0.5); 
+        box-shadow: 0 8px 25px rgba(30, 144, 255, 0.5);
     }
 }
 
 .btn.secondary {
-    background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+    background: #f3f4f6; /* 改为纯色 */
     color: #546e7a;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .btn.secondary:hover {
-    background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+    background: #e5e7eb; /* 改为纯色 */
     transform: translateY(-3px) scale(1.03);
 }
 
 .btn.success {
-    background: linear-gradient(135deg, #ffeb3b, #fbc02d); /* 亮黄色 */
+    background: #ffeb3b; /* 改为纯色 */
     color: #5d4037;
     box-shadow: 0 6px 20px rgba(255, 235, 59, 0.3);
 }
@@ -409,15 +447,14 @@ h1 {
     box-shadow: 0 12px 30px rgba(255, 235, 59, 0.4);
 }
 
-/* 答案与解析部分使用淡粉色和亮黄色 */
 .answer-explanation {
     margin-top: 30px;
     padding: 25px;
     border-radius: 12px;
-    background: linear-gradient(135deg, #ffebee, #fff9c4); /* 淡粉色到亮黄色渐变 */
-    border-left: 5px solid #ffb6c1; /* 淡粉色边框 */
+    background: #f0f7ff; /* 改为纯色 */
+    border-left: 5px solid #1e90ff;
     animation: explanationReveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.1); /* 淡粉色阴影 */
+    box-shadow: 0 5px 15px rgba(30, 144, 255, 0.1);
 }
 
 @keyframes explanationReveal {
@@ -432,7 +469,7 @@ h1 {
 }
 
 .answer-explanation h3 {
-    color: #e91e63; /* 粉红色 */
+    color: #1a5fff;
     margin-bottom: 18px;
     font-size: 1.4rem;
 }
@@ -445,7 +482,6 @@ h1 {
     margin-bottom: 12px;
     line-height: 1.7;
     font-size: 1.1rem;
-    color: #5d4037; /* 深棕色文字，提高可读性 */
 }
 
 #correct-indicator {
@@ -498,32 +534,39 @@ h1 {
     margin: 35px 0;
 }
 
-/* 分数显示圆使用纯色 */
 .score-circle {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: #1e90ff; /* 改为纯色，使用鲜艳蓝色 */
+    background: #1e90ff; /* 改为纯色 */
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0 auto 30px;
-    box-shadow: 0 15px 30px rgba(30, 144, 255, 0.3); /* 使用鲜艳蓝色阴影 */
-    animation: scorePulse 3s ease-in-out infinite;
+    box-shadow: 0 15px 30px rgba(30, 144, 255, 0.3);
+    /* 移除放大缩小动画 */
     position: relative;
 }
 
-@keyframes scorePulse {
-    0%, 100% { 
-        transform: scale(1);
-        box-shadow: 0 15px 30px rgba(30, 144, 255, 0.3); 
-    }
-    50% { 
-        transform: scale(1.08);
-        box-shadow: 0 20px 40px rgba(30, 144, 255, 0.4); 
-    }
+.score-circle::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1e90ff, #00bfff, #ffeb3b);
+    z-index: -1;
+    animation: scoreRotate 6s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes scoreRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .score-circle span {
@@ -541,7 +584,7 @@ h1 {
 .donation-section {
     margin: 45px 0;
     padding: 30px;
-    background: linear-gradient(135deg, #fff9c4, #ffecb3); /* 亮黄色渐变 */
+    background: #fff7ed; /* 改为纯色 */
     border-radius: 15px;
     border: 2px dashed #ff9800;
     text-align: center;
@@ -598,15 +641,9 @@ h1 {
 
 .progress {
     height: 100%;
-    background: linear-gradient(135deg, #1e90ff, #00bfff); /* 使用鲜艳蓝色渐变 */
+    background: #1e90ff; /* 改为纯色 */
     width: 0%;
     transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation: progressPulse 3s ease-in-out infinite;
-}
-
-@keyframes progressPulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.85; }
 }
 
 /* 响应式设计 */
@@ -655,5 +692,10 @@ h1 {
     
     .btn:hover {
         transform: translateY(-2px) scale(1.03);
+    }
+    
+    .quiz-container::before,
+    .quiz-container::after {
+        display: none;
     }
 }
