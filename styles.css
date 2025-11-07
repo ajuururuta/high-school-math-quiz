@@ -503,9 +503,7 @@ h1 {
     font-size: 1.3rem;
     margin-bottom: 15px;
     animation: fadeInUp 0.8s ease-out;
-    padding: 10px 15px;
-    border-radius: 8px;
-    display: inline-block;
+    /* 移除了padding, border-radius和display属性，让文字自然显示 */
 }
 
 @keyframes fadeInUp {
@@ -519,16 +517,17 @@ h1 {
     }
 }
 
+/* 修复：去除背景色和边框，只保留文字颜色 */
 #correct-indicator.correct {
-    color: #4caf50;
-    background-color: rgba(76, 175, 80, 0.1);
-    border: 1px solid rgba(76, 175, 80, 0.3);
+    color: #4caf50; /* 只保留绿色文字 */
+    background-color: transparent; /* 去除背景色 */
+    border: none; /* 去除边框 */
 }
 
 #correct-indicator.incorrect {
-    color: #f44336;
-    background-color: rgba(244, 67, 54, 0.1);
-    border: 1px solid rgba(244, 67, 54, 0.3);
+    color: #f44336; /* 只保留红色文字 */
+    background-color: transparent; /* 去除背景色 */
+    border: none; /* 去除边框 */
 }
 
 .hidden {
