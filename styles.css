@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #f0f4ff;
+    background: #f0f4ff; /* 纯色背景 */
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -18,13 +18,13 @@ body {
 
 @keyframes gentleGradientShift {
     0%, 100% { 
-        background: #f0f4ff;
+        background: #f0f4ff; 
     }
     33% { 
-        background: #f8f0ff;
+        background: #f8f0ff; 
     }
     66% { 
-        background: #f0fff8;
+        background: #f0fff8; 
     }
 }
 
@@ -34,7 +34,7 @@ body {
     background: #ffffff;
     border-radius: 20px;
     box-shadow: 
-        0 20px 40px rgba(0, 85, 255, 0.15),
+        0 20px 40px rgba(0, 122, 255, 0.15), /* 更鲜艳的蓝色阴影 */
         0 8px 16px rgba(255, 193, 7, 0.1),
         0 0 0 1px rgba(255, 255, 255, 0.9);
     overflow: hidden;
@@ -45,17 +45,61 @@ body {
 
 @keyframes containerFloat {
     0%, 100% { 
-        transform: translateY(0px) rotate(0deg);
-        box-shadow: 0 20px 40px rgba(0, 85, 255, 0.15);
+        transform: translateY(0px) rotate(0deg); 
+        box-shadow: 0 20px 40px rgba(0, 122, 255, 0.15);
     }
     50% { 
         transform: translateY(-6px) rotate(0.4deg);
-        box-shadow: 0 25px 50px rgba(0, 85, 255, 0.2);
+        box-shadow: 0 25px 50px rgba(0, 122, 255, 0.2);
+    }
+}
+
+/* 装饰元素 */
+.quiz-container::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 80px;
+    height: 80px;
+    background: #007aff; /* 更鲜艳的蓝色 */
+    border-radius: 50%;
+    opacity: 0.1;
+    z-index: 0;
+    animation: decorFloat 6s ease-in-out infinite;
+}
+
+.quiz-container::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 100px;
+    height: 100px;
+    background: #007aff; /* 更鲜艳的蓝色 */
+    border-radius: 50%;
+    opacity: 0.08;
+    z-index: 0;
+    animation: decorFloat 8s ease-in-out infinite 2s;
+}
+
+@keyframes decorFloat {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 0.08;
+    }
+    33% { 
+        transform: translate(10px, -10px) scale(1.1) rotate(120deg);
+        opacity: 0.12;
+    }
+    66% { 
+        transform: translate(-5px, 5px) scale(0.9) rotate(240deg);
+        opacity: 0.06;
     }
 }
 
 header {
-    background: linear-gradient(135deg, #0066ff 0%, #0044ff 100%);
+    background: linear-gradient(135deg, #007aff 0%, #0056cc 100%); /* 更鲜艳的蓝色渐变 */
     color: #ffffff;
     padding: 30px 25px;
     text-align: center;
@@ -63,16 +107,14 @@ header {
     overflow: hidden;
 }
 
-/* 朴素的标题样式 */
+/* 标题改为朴素样式 */
 h1 {
     font-size: 2.4rem;
     margin-bottom: 12px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    color: #ffffff; /* 纯白色，更朴素 */
     font-weight: 600;
-    color: #ffffff;
-    text-shadow: none;
-    background: none;
-    -webkit-text-fill-color: #ffffff;
-    animation: none;
+    letter-spacing: 1px;
 }
 
 .progress-info {
@@ -113,7 +155,7 @@ h1 {
 }
 
 .start-content h2 {
-    color: #0066ff;
+    color: #007aff; /* 使用新蓝色 */
     margin-bottom: 20px;
     font-size: 2rem;
 }
@@ -133,9 +175,9 @@ h1 {
     background: #f8f9fa;
     padding: 25px;
     border-radius: 12px;
-    border-left: 5px solid #0066ff;
+    border-left: 5px solid #007aff; /* 使用新蓝色 */
     animation: infoSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 5px 15px rgba(0, 85, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 122, 255, 0.1);
 }
 
 @keyframes infoSlideUp {
@@ -152,11 +194,11 @@ h1 {
 .quiz-info li {
     margin: 15px 0;
     font-size: 1.15rem;
-    color: #0066ff;
+    color: #007aff; /* 使用新蓝色 */
     animation: listItemStagger 0.6s ease-out;
     animation-fill-mode: both;
     padding: 8px 0;
-    border-bottom: 1px solid rgba(0, 85, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 122, 255, 0.1);
 }
 
 .quiz-info li:last-child {
@@ -206,19 +248,19 @@ h1 {
     padding: 20px;
     background: #f8f9fa;
     border-radius: 12px;
-    border-left: 5px solid #0066ff;
+    border-left: 5px solid #007aff; /* 使用新蓝色 */
     animation: textFocus 4s ease-in-out infinite;
-    box-shadow: 0 5px 15px rgba(0, 85, 255, 0.08);
+    box-shadow: 0 5px 15px rgba(0, 122, 255, 0.08);
 }
 
 @keyframes textFocus {
     0%, 100% { 
-        box-shadow: 0 5px 15px rgba(0, 85, 255, 0.08);
-        border-left-color: #0066ff;
+        box-shadow: 0 5px 15px rgba(0, 122, 255, 0.08);
+        border-left-color: #007aff;
     }
     50% { 
-        box-shadow: 0 8px 25px rgba(0, 85, 255, 0.15);
-        border-left-color: #0044ff;
+        box-shadow: 0 8px 25px rgba(0, 122, 255, 0.15);
+        border-left-color: #0056cc;
     }
 }
 
@@ -249,7 +291,7 @@ h1 {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 102, 255, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(0, 122, 255, 0.1), transparent);
     transition: left 0.8s;
 }
 
@@ -258,14 +300,14 @@ h1 {
 }
 
 .option:hover {
-    border-color: #0066ff;
+    border-color: #007aff; /* 使用新蓝色 */
     background: #f0f4ff;
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 10px 25px rgba(0, 102, 255, 0.15);
+    box-shadow: 0 10px 25px rgba(0, 122, 255, 0.15);
 }
 
 .option.selected {
-    border-color: #0066ff;
+    border-color: #007aff;
     background: #e3f2fd;
     font-weight: 600;
     animation: selectPulse 0.6s ease-out;
@@ -307,23 +349,23 @@ h1 {
     align-items: center;
     width: 35px;
     height: 35px;
-    background: #0066ff;
+    background: #007aff; /* 使用新蓝色 */
     color: white;
     border-radius: 50%;
     margin-right: 18px;
     font-weight: bold;
     animation: letterBounce 4s ease-in-out infinite;
-    box-shadow: 0 4px 8px rgba(0, 102, 255, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 122, 255, 0.3);
 }
 
 @keyframes letterBounce {
     0%, 100% { 
         transform: translateY(0) rotate(0deg);
-        background: #0066ff;
+        background: #007aff;
     }
     50% { 
         transform: translateY(-4px) rotate(5deg);
-        background: #0044ff;
+        background: #0056cc;
     }
 }
 
@@ -367,24 +409,25 @@ h1 {
     height: 300px;
 }
 
+/* 下一题按钮使用不同的蓝色 */
 .btn.primary {
-    background: linear-gradient(135deg, #0066ff, #0044ff);
+    background: linear-gradient(135deg, #4cd964 0%, #34c759 100%); /* 使用绿色系，与主蓝色区分 */
     color: white;
-    box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(76, 217, 100, 0.3);
 }
 
 .btn.primary:hover {
     transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 12px 30px rgba(0, 102, 255, 0.4);
+    box-shadow: 0 12px 30px rgba(76, 217, 100, 0.4);
     animation: btnGlow 2s ease-in-out infinite;
 }
 
 @keyframes btnGlow {
     0%, 100% { 
-        box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
+        box-shadow: 0 6px 20px rgba(76, 217, 100, 0.3);
     }
     50% { 
-        box-shadow: 0 8px 25px rgba(0, 102, 255, 0.5);
+        box-shadow: 0 8px 25px rgba(76, 217, 100, 0.5);
     }
 }
 
@@ -400,54 +443,25 @@ h1 {
 }
 
 .btn.success {
-    background: linear-gradient(135deg, #0066ff, #0044ff);
+    background: linear-gradient(135deg, #007aff, #0056cc); /* 使用主蓝色 */
     color: white;
-    box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 122, 255, 0.3);
 }
 
 .btn.success:hover {
     transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 12px 30px rgba(0, 102, 255, 0.4);
+    box-shadow: 0 12px 30px rgba(0, 122, 255, 0.4);
 }
 
-/* 答案与解析部分 - 使用粉色、黄色、蓝色渐变 */
+/* 答案与解析部分使用淡粉色和亮黄色渐变 */
 .answer-explanation {
     margin-top: 30px;
     padding: 25px;
     border-radius: 12px;
-    background: linear-gradient(135deg, 
-        #ffb6c1 0%,    /* 粉色 */
-        #fff9c4 25%,   /* 黄色 */
-        #bbdefb 50%,   /* 浅蓝色 */
-        #e3f2fd 75%,   /* 更浅的蓝色 */
-        #f8f9fa 100%   /* 白色 */
-    );
-    border-left: 5px solid #ff6b95;
+    background: linear-gradient(135deg, #fff0f5, #fff9c4); /* 淡粉色到亮黄色渐变 */
+    border-left: 5px solid #ff6b9d; /* 粉色边框 */
     animation: explanationReveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 5px 15px rgba(255, 107, 149, 0.2);
-    position: relative;
-    overflow: hidden;
-}
-
-.answer-explanation::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, 
-        #ff6b95, 
-        #ffd166, 
-        #06d6a0, 
-        #118ab2
-    );
-    animation: gradientShift 3s ease-in-out infinite;
-}
-
-@keyframes gradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.1);
 }
 
 @keyframes explanationReveal {
@@ -462,10 +476,9 @@ h1 {
 }
 
 .answer-explanation h3 {
-    color: #d23669;
+    color: #e91e63; /* 粉红色 */
     margin-bottom: 18px;
     font-size: 1.4rem;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .answer-feedback {
@@ -476,7 +489,6 @@ h1 {
     margin-bottom: 12px;
     line-height: 1.7;
     font-size: 1.1rem;
-    color: #37474f;
 }
 
 #correct-indicator {
@@ -529,35 +541,35 @@ h1 {
     margin: 35px 0;
 }
 
-/* 最终分数显示 - 使用纯色 */
+/* 分数圆使用纯色 */
 .score-circle {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: #0066ff; /* 纯蓝色背景 */
+    background: #007aff; /* 纯色背景 */
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0 auto 30px;
-    box-shadow: 0 15px 30px rgba(0, 102, 255, 0.3);
+    box-shadow: 0 15px 30px rgba(0, 122, 255, 0.3);
     animation: scorePulse 3s ease-in-out infinite;
     position: relative;
-    border: 8px solid #ffffff;
 }
 
-.score-circle::after {
+.score-circle::before {
     content: '';
     position: absolute;
-    top: -12px;
-    left: -12px;
-    right: -12px;
-    bottom: -12px;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
     border-radius: 50%;
-    border: 3px solid #0044ff;
+    background: #007aff; /* 纯色 */
+    z-index: -1;
     animation: scoreRotate 6s linear infinite;
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
 @keyframes scoreRotate {
@@ -568,11 +580,11 @@ h1 {
 @keyframes scorePulse {
     0%, 100% { 
         transform: scale(1);
-        box-shadow: 0 15px 30px rgba(0, 102, 255, 0.3);
+        box-shadow: 0 15px 30px rgba(0, 122, 255, 0.3);
     }
     50% { 
         transform: scale(1.08);
-        box-shadow: 0 20px 40px rgba(0, 102, 255, 0.4);
+        box-shadow: 0 20px 40px rgba(0, 122, 255, 0.4);
     }
 }
 
@@ -580,7 +592,6 @@ h1 {
     font-size: 4rem;
     font-weight: bold;
     line-height: 1;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .score-circle small {
@@ -649,7 +660,7 @@ h1 {
 
 .progress {
     height: 100%;
-    background: linear-gradient(135deg, #0066ff, #0044ff);
+    background: linear-gradient(135deg, #007aff, #0056cc);
     width: 0%;
     transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation: progressPulse 3s ease-in-out infinite;
