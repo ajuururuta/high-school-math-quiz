@@ -467,7 +467,6 @@ h1 {
     right: 0;
     height: 3px;
     background: linear-gradient(90deg, #ffb6c1, #ffd966, #ffb6c1);
-    animation: shimmer 3s ease-in infinite;
 }
 
 @keyframes explanationReveal {
