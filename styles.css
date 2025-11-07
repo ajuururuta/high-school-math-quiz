@@ -467,18 +467,7 @@ h1 {
     right: 0;
     height: 3px;
     background: linear-gradient(90deg, #ffb6c1, #ffd966, #ffb6c1);
-    animation: shimmer 3s ease-in-out infinite;
-}
-
-@keyframes shimmer {
-    0%, 100% { 
-        transform: translateX(-100%);
-        opacity: 0.7;
-    }
-    50% { 
-        transform: translateX(100%);
-        opacity: 1;
-    }
+    animation: shimmer 3s ease-in infinite;
 }
 
 @keyframes explanationReveal {
