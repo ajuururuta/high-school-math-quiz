@@ -116,9 +116,33 @@ h1 {
 .progress-info {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 1.1rem;
     font-weight: 600;
     opacity: 0.95;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.timer.warning {
+    color: #ffeb3b;
+    animation: timerPulse 1s ease-in-out infinite;
+}
+
+.timer.danger {
+    color: #ff5252;
+    animation: timerPulse 0.5s ease-in-out infinite;
+}
+
+@keyframes timerPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
 }
 
 .screen {
@@ -204,6 +228,8 @@ h1 {
 .quiz-info li:nth-child(1) { animation-delay: 0.1s; }
 .quiz-info li:nth-child(2) { animation-delay: 0.2s; }
 .quiz-info li:nth-child(3) { animation-delay: 0.3s; }
+.quiz-info li:nth-child(4) { animation-delay: 0.4s; }
+.quiz-info li:nth-child(5) { animation-delay: 0.5s; }
 
 @keyframes listItemStagger {
     from {
@@ -214,6 +240,31 @@ h1 {
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+.timer-option {
+    margin: 25px 0;
+    padding: 15px;
+    background: #f0f4ff;
+    border-radius: 10px;
+    text-align: left;
+    display: inline-block;
+}
+
+.timer-option label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.05rem;
+    color: #1e90ff;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.timer-option input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
 
 .question-container {
@@ -234,6 +285,36 @@ h1 {
 
 .question-header {
     margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-mark {
+    padding: 10px 20px;
+    border: 2px solid #ff9800;
+    background: transparent;
+    color: #ff9800;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-mark:hover {
+    background: #ff9800;
+    color: white;
+    transform: scale(1.05);
+}
+
+.btn-mark.marked {
+    background: #ff9800;
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
 }
 
 #question-text {
@@ -650,19 +731,77 @@ h1 {
     margin-top: 35px;
 }
 
-.progress-bar {
-    height: 10px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
-    margin: 25px 0;
-    overflow: hidden;
+.question-nav-panel {
+    margin-top: 35px;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border-left: 5px solid #1e90ff;
 }
 
-.progress {
-    height: 100%;
+.question-nav-panel h4 {
+    color: #1e90ff;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.question-nav-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 10px;
+}
+
+.question-nav-btn {
+    padding: 12px;
+    border: 2px solid #e1f5fe;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.question-nav-btn:hover {
+    background: #e3f2fd;
+    transform: scale(1.05);
+}
+
+.question-nav-btn.active {
     background: #1e90ff;
+    color: white;
+    border-color: #1e90ff;
+}
+
+.question-nav-btn.answered {
+    background: #e8f5e9;
+    border-color: #4caf50;
+}
+
+.question-nav-btn.marked::after {
+    content: '🔖';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 0.9rem;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #1e90ff, #00bfff);
     width: 0%;
-    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: width 0.5s ease;
+    border-radius: 4px;
 }
 
 /* 响应式设计 */
@@ -682,6 +821,11 @@ h1 {
     
     h1 {
         font-size: 2rem;
+    }
+    
+    .progress-info {
+        font-size: 0.95rem;
+        justify-content: center;
     }
     
     .navigation {
@@ -725,5 +869,189 @@ h1 {
     
     .answer-explanation h3 {
         font-size: 1.3rem;
+    }
+    
+    .question-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .btn-mark {
+        width: 100%;
+    }
+    
+    #question-text {
+        font-size: 1.3rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    .question-nav-buttons {
+        grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+    }
+}
+
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content h3 {
+    color: #1e90ff;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+}
+
+.modal-content p {
+    color: #546e7a;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+.modal-actions .btn {
+    padding: 12px 28px;
+}
+
+/* 通知动画 */
+@keyframes slideInRight {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+}
+
+/* 无障碍功能 - 键盘焦点样式 */
+button:focus,
+.option:focus {
+    outline: 3px solid #1e90ff;
+    outline-offset: 2px;
+}
+
+/* 提升性能 - 硬件加速 */
+.option,
+.btn,
+.quiz-container {
+    will-change: transform;
+}
+
+/* 打印样式 */
+@media print {
+    body {
+        background: white;
+    }
+    
+    .quiz-container {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .navigation,
+    .btn-mark,
+    .question-nav-panel,
+    header {
+        display: none !important;
+    }
+    
+    .answer-explanation {
+        page-break-inside: avoid;
+    }
+}
+
+/* 优化触摸设备体验 */
+@media (hover: none) and (pointer: coarse) {
+    .option,
+    .btn {
+        min-height: 48px;
+        touch-action: manipulation;
+    }
+    
+    .option:active {
+        background: #e3f2fd;
+        transform: scale(0.98);
+    }
+}
+
+/* 减少动画（用户偏好设置） */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+    .option {
+        border-width: 3px;
+    }
+    
+    .btn {
+        border: 2px solid currentColor;
     }
 }
