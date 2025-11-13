@@ -6,7 +6,7 @@
     <meta name="description" content="高中数学知识测验平台 - 提升你的数学能力">
     <meta name="theme-color" content="#1e90ff">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>高中数学知识闯关</title>
+    <title>高中数学能力测评系统</title>
     <link rel="preload" href="styles.css" as="style">
     <link rel="stylesheet" href="styles.css">
     <link rel="preload" href="questions.js" as="script">
@@ -15,32 +15,32 @@
 <body>
     <div class="quiz-container">
         <header role="banner">
-            <h1>高中数学知识闯关</h1>
+            <h1>高中数学能力测评系统</h1>
             <div class="progress-info" role="status" aria-live="polite">
                 <span id="progress">题目: <span id="current-question">1</span>/<span id="total-questions">0</span></span>
-                <span id="timer-display" class="timer" aria-label="答题时间">⏱ <span id="timer">00:00</span></span>
+                <span id="timer-display" class="timer" aria-label="答题时间">计时: <span id="timer">00:00</span></span>
                 <span id="score-display">得分: <span id="current-score">0</span>分</span>
             </div>
         </header>
         
         <div id="start-screen" class="screen active">
             <div class="start-content">
-                <h2>欢迎参加高中数学知识挑战!</h2>
-                <p>ヾ(•ω•`)o测试你的高中数学知识水平 - 每答完一题可立即查看答案与解析(/≧▽≦)/</p>
+                <h2>高中数学能力测评系统</h2>
+                <p>本系统旨在全面评估您的高中数学知识掌握程度，每道题目均附有详细解析。</p>
                 <ul class="quiz-info">
-                    <li>📝 题目数量: <span id="info-total-questions">0</span></li>
-                    <li>⭐ 每题分值: <span id="info-points-per-question">1</span>分</li>
-                    <li>🏆 满分: <span id="info-max-score">0</span>分</li>
-                    <li>⏱️ 答题计时: 不限时，记录用时</li>
-                    <li>🔖 可标记题目供回顾</li>
+                    <li>题目数量: <span id="info-total-questions">0</span> 题</li>
+                    <li>题目分值: <span id="info-points-per-question">1</span> 分</li>
+                    <li>总分: <span id="info-max-score">0</span> 分</li>
+                    <li>答题计时: 系统自动记录</li>
+                    <li>支持标记题目便于复习</li>
                 </ul>
                 <div class="timer-option">
                     <label>
                         <input type="checkbox" id="enable-timer-limit" />
-                        启用时间限制（30分钟）
+                        启用答题时间限制（30分钟）
                     </label>
                 </div>
-                <button id="start-btn" class="btn primary">开始挑战</button>
+                <button id="start-btn" class="btn primary">开始测评</button>
             </div>
         </div>
         
@@ -52,7 +52,7 @@
             <div class="question-container">
                 <div class="question-header">
                     <h2 id="question-text">题目内容将显示在这里</h2>
-                    <button id="mark-btn" class="btn-mark" title="标记此题以便稍后回顾">🔖 标记</button>
+                    <button id="mark-btn" class="btn-mark" title="标记此题以便稍后回顾">标记题目</button>
                 </div>
                 <div id="options-container" class="options-container">
                     <!-- 选项将由JavaScript动态生成 -->
@@ -83,7 +83,7 @@
         
         <div id="results-screen" class="screen">
             <div class="results-content">
-                <h2>答题结束!(≧∇≦)ﾉ</h2>
+                <h2>测评完成</h2>
                 <div class="score-summary">
                     <div class="score-circle">
                         <span id="final-score">0</span>
@@ -93,7 +93,7 @@
                 
                 <!-- 打赏区域 -->
                 <div class="donation-section">
-                    <p class="donation-text">希望这个闯关游戏对你有帮助；如果你愿意支持我们开发更多功能，请长按屏幕识别下方二维码打赏我们团队，谢谢你的支持(*^_^*)</p>
+                    <p class="donation-text">如果本测评系统对您的学习有所帮助，欢迎扫描二维码支持我们继续改进和开发更多功能。</p>
                     <div class="qr-code">
                         <!-- 请将此处替换为您自己的收款码图片 -->
                         <img src="images/donation-qr.png" alt="打赏二维码" loading="lazy" width="280" height="280">
