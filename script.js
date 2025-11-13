@@ -389,6 +389,9 @@ function showQuestion(index) {
     
     // 更新导航按钮状态
     updateNavigationButtons();
+    
+    // 应用动态悬停效果到新创建的选项
+    applyDynamicEffectsToOptions();
 }
 
 // 选择选项
@@ -620,6 +623,53 @@ function restartQuiz() {
 
 // 初始化应用
 document.addEventListener('DOMContentLoaded', init);
+
+// 动态添加悬停发光效果
+function addDynamicHoverEffects() {
+    // 为所有按钮添加发光效果
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('mouseenter', function(e) {
+            this.style.filter = 'brightness(1.1) drop-shadow(0 0 15px rgba(107, 137, 153, 0.4))';
+        });
+        btn.addEventListener('mouseleave', function(e) {
+            this.style.filter = 'brightness(1) drop-shadow(0 0 0 transparent)';
+        });
+    });
+    
+    // 为选项添加发光效果
+    const options = document.querySelectorAll('.option');
+    options.forEach(option => {
+        option.addEventListener('mouseenter', function(e) {
+            if (!this.classList.contains('correct') && !this.classList.contains('incorrect')) {
+                this.style.filter = 'brightness(1.05) drop-shadow(0 0 10px rgba(212, 163, 115, 0.3))';
+            }
+        });
+        option.addEventListener('mouseleave', function(e) {
+            this.style.filter = 'brightness(1) drop-shadow(0 0 0 transparent)';
+        });
+    });
+}
+
+// 在显示题目时重新应用动态效果
+function applyDynamicEffectsToOptions() {
+    const options = document.querySelectorAll('.option');
+    options.forEach(option => {
+        option.addEventListener('mouseenter', function(e) {
+            if (!this.classList.contains('correct') && !this.classList.contains('incorrect')) {
+                this.style.filter = 'brightness(1.05) drop-shadow(0 0 10px rgba(212, 163, 115, 0.3))';
+            }
+        });
+        option.addEventListener('mouseleave', function(e) {
+            this.style.filter = 'brightness(1) drop-shadow(0 0 0 transparent)';
+        });
+    });
+}
+
+// 初始调用
+setTimeout(() => {
+    addDynamicHoverEffects();
+}, 100);
 // 键盘导航支持
 document.addEventListener('keydown', (e) => {
     // 如果模态框打开，只处理模态框相关按键
