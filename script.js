@@ -172,7 +172,10 @@ function saveProgress() {
             elapsedSeconds,
             timestamp: Date.now()
         };
-        localStorage.setItem('quizProgress', JSON.stringify(progress));
+        // 验证数据有效性
+        if (currentQuestionIndex >= 0 && currentQuestionIndex < questions.length) {
+            localStorage.setItem('quizProgress', JSON.stringify(progress));
+        }
     } catch (e) {
         console.error('保存进度失败:', e);
     }
@@ -185,15 +188,26 @@ function loadProgress() {
             const progress = JSON.parse(saved);
             // 检查是否在24小时内
             if (Date.now() - progress.timestamp < 24 * 60 * 60 * 1000) {
-                currentQuestionIndex = progress.currentQuestionIndex;
-                userAnswers = progress.userAnswers;
-                score = progress.score;
-                markedQuestions = new Set(progress.markedQuestions);
-                elapsedSeconds = progress.elapsedSeconds || 0;
+                // 验证数据完整性和有效性
+                if (typeof progress.currentQuestionIndex === 'number' &&
+                    progress.currentQuestionIndex >= 0 &&
+                    progress.currentQuestionIndex < questions.length &&
+                    Array.isArray(progress.userAnswers) &&
+                    progress.userAnswers.length === questions.length &&
+                    typeof progress.score === 'number' &&
+                    progress.score >= 0) {
+                    currentQuestionIndex = progress.currentQuestionIndex;
+                    userAnswers = progress.userAnswers;
+                    score = progress.score;
+                    markedQuestions = new Set(progress.markedQuestions);
+                    elapsedSeconds = progress.elapsedSeconds || 0;
+                }
             }
         }
     } catch (e) {
         console.error('加载进度失败:', e);
+        // 清除损坏的数据
+        localStorage.removeItem('quizProgress');
     }
 }
 
@@ -599,3 +613,78 @@ function restartQuiz() {
 
 // 初始化应用
 document.addEventListener('DOMContentLoaded', init);
+// 键盘导航支持
+document.addEventListener('keydown', (e) => {
+    // 如果模态框打开，只处理模态框相关按键
+    if (confirmModal.classList.contains('active')) {
+        if (e.key === 'Escape') {
+            hideModal();
+        } else if (e.key === 'Enter') {
+            handleModalConfirm();
+        }
+        return;
+    }
+    
+    // 只在答题界面启用键盘导航
+    if (!quizScreen.classList.contains('active')) {
+        return;
+    }
+    
+    switch(e.key) {
+        case 'ArrowLeft':
+            if (!prevBtn.disabled) {
+                showPreviousQuestion();
+            }
+            break;
+        case 'ArrowRight':
+            if (nextBtn.style.display !== 'none') {
+                showNextQuestion();
+            }
+            break;
+        case 'Enter':
+            if (!submitBtn.disabled && submitBtn.style.display !== 'none') {
+                submitBtn.click();
+            }
+            break;
+        case 'm':
+        case 'M':
+            toggleMarkQuestion();
+            break;
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+            const index = parseInt(e.key) - 1;
+            if (index < questions.length) {
+                jumpToQuestion(index);
+            }
+            break;
+    }
+});
+
+// 添加键盘快捷键说明到开始界面
+window.addEventListener('DOMContentLoaded', () => {
+    const startContent = document.querySelector('.start-content');
+    if (startContent) {
+        const keyboardHints = document.createElement('div');
+        keyboardHints.className = 'keyboard-hints';
+        keyboardHints.innerHTML = `
+            <details>
+                <summary style="cursor: pointer; color: #1e90ff; font-weight: 600; margin-top: 20px;">⌨️ 键盘快捷键</summary>
+                <ul style="text-align: left; margin-top: 10px; color: #546e7a; font-size: 0.95rem;">
+                    <li>← → 方向键: 上一题/下一题</li>
+                    <li>Enter: 提交答案</li>
+                    <li>M: 标记/取消标记</li>
+                    <li>1-9: 直接跳转到对应题目</li>
+                    <li>Esc: 关闭对话框</li>
+                </ul>
+            </details>
+        `;
+        startContent.appendChild(keyboardHints);
+    }
+});
