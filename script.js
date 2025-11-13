@@ -623,7 +623,7 @@ function addDynamicHoverEffects() {
     const buttons = document.querySelectorAll('.btn');
     buttons.forEach(btn => {
         btn.addEventListener('mouseenter', function(e) {
-            this.style.filter = 'brightness(1.1) drop-shadow(0 0 15px rgba(29, 151, 108, 0.6))';
+            this.style.filter = 'brightness(1.1) drop-shadow(0 0 15px rgba(63, 81, 181, 0.5))';
         });
         btn.addEventListener('mouseleave', function(e) {
             this.style.filter = 'brightness(1) drop-shadow(0 0 0 transparent)';
@@ -635,7 +635,7 @@ function addDynamicHoverEffects() {
     options.forEach(option => {
         option.addEventListener('mouseenter', function(e) {
             if (!this.classList.contains('correct') && !this.classList.contains('incorrect')) {
-                this.style.filter = 'brightness(1.05) drop-shadow(0 0 10px rgba(30, 144, 255, 0.4))';
+                this.style.filter = 'brightness(1.05) drop-shadow(0 0 10px rgba(92, 107, 192, 0.4))';
             }
         });
         option.addEventListener('mouseleave', function(e) {
@@ -650,7 +650,7 @@ function applyDynamicEffectsToOptions() {
     options.forEach(option => {
         option.addEventListener('mouseenter', function(e) {
             if (!this.classList.contains('correct') && !this.classList.contains('incorrect')) {
-                this.style.filter = 'brightness(1.05) drop-shadow(0 0 10px rgba(30, 144, 255, 0.4))';
+                this.style.filter = 'brightness(1.05) drop-shadow(0 0 10px rgba(92, 107, 192, 0.4))';
             }
         });
         option.addEventListener('mouseleave', function(e) {
