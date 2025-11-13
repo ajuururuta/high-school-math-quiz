@@ -332,6 +332,13 @@ function toggleMarkQuestion() {
 
 // 开始测验
 function startQuiz() {
+    // 重置测验状态，确保从第一题开始
+    currentQuestionIndex = 0;
+    userAnswers = new Array(questions.length).fill(null);
+    score = 0;
+    markedQuestions.clear();
+    elapsedSeconds = 0;
+    
     startScreen.classList.remove('active');
     quizScreen.classList.add('active');
     showQuestion(currentQuestionIndex);
