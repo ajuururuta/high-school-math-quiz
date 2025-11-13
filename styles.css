@@ -1,58 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', 'Segoe UI', 'Microsoft YaHei', sans-serif;
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
 }
 
 body {
-    background: linear-gradient(135deg, #faf6f0 0%, #f5ebe0 100%);
+    background: linear-gradient(135deg, #e3f2fd 0%, #fce4ec 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    color: #4a4a4a;
-    animation: gentleGradientShift 30s ease-in-out infinite;
-    background-size: 200% 200%;
+    color: #37474f;
+    animation: gentleGradientShift 20s ease-in-out infinite;
 }
 
 @keyframes gentleGradientShift {
-    0% { 
-        background: linear-gradient(135deg, #faf6f0 0%, #f5ebe0 100%); 
-        background-position: 0% 50%;
+    0%, 100% { 
+        background: linear-gradient(135deg, #e3f2fd 0%, #fce4ec 100%); 
     }
-    25% { 
-        background: linear-gradient(135deg, #f5ebe0 0%, #fff5f0 100%);
-        background-position: 50% 50%;
+    33% { 
+        background: linear-gradient(135deg, #fce4ec 0%, #fff9c4 100%); 
     }
-    50% { 
-        background: linear-gradient(135deg, #fff5f0 0%, #f0f4f0 100%);
-        background-position: 100% 50%;
-    }
-    75% { 
-        background: linear-gradient(135deg, #f0f4f0 0%, #f5ebe0 100%);
-        background-position: 50% 50%;
-    }
-    100% { 
-        background: linear-gradient(135deg, #f5ebe0 0%, #faf6f0 100%); 
-        background-position: 0% 50%;
+    66% { 
+        background: linear-gradient(135deg, #fff9c4 0%, #e3f2fd 100%); 
     }
 }
 
 .quiz-container {
     width: 100%;
     max-width: 900px;
-    background: linear-gradient(135deg, #ffffff 0%, #fffcf9 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
     border-radius: 20px;
     box-shadow: 
-        0 20px 40px rgba(180, 130, 100, 0.08),
-        0 8px 16px rgba(180, 130, 100, 0.06),
+        0 20px 40px rgba(30, 144, 255, 0.15),
+        0 8px 16px rgba(255, 193, 7, 0.1),
         0 0 0 1px rgba(255, 255, 255, 0.9);
     overflow: hidden;
-    border: 1px solid #f0e6dc;
+    border: 1px solid #e1f5fe;
     animation: containerFloat 8s ease-in-out infinite;
     position: relative;
 }
@@ -60,11 +46,11 @@ body {
 @keyframes containerFloat {
     0%, 100% { 
         transform: translateY(0px) rotate(0deg); 
-        box-shadow: 0 20px 40px rgba(180, 130, 100, 0.08), 0 8px 16px rgba(180, 130, 100, 0.06);
+        box-shadow: 0 20px 40px rgba(30, 144, 255, 0.15);
     }
     50% { 
-        transform: translateY(-8px) rotate(0.5deg);
-        box-shadow: 0 28px 55px rgba(180, 130, 100, 0.12), 0 12px 24px rgba(180, 130, 100, 0.08);
+        transform: translateY(-6px) rotate(0.4deg);
+        box-shadow: 0 25px 50px rgba(30, 144, 255, 0.2);
     }
 }
 
@@ -75,9 +61,9 @@ body {
     right: -20px;
     width: 80px;
     height: 80px;
-    background: #d4a373;
+    background: #1e90ff;
     border-radius: 50%;
-    opacity: 0.05;
+    opacity: 0.1;
     z-index: 0;
     animation: decorFloat 6s ease-in-out infinite;
 }
@@ -89,9 +75,9 @@ body {
     left: -30px;
     width: 100px;
     height: 100px;
-    background: #d4a373;
+    background: #1e90ff;
     border-radius: 50%;
-    opacity: 0.03;
+    opacity: 0.08;
     z-index: 0;
     animation: decorFloat 8s ease-in-out infinite 2s;
 }
@@ -112,7 +98,7 @@ body {
 }
 
 header {
-    background: linear-gradient(135deg, #5c7a8c 0%, #6b8999 100%);
+    background: #1e90ff;
     color: #ffffff;
     padding: 30px 25px;
     text-align: center;
@@ -123,9 +109,8 @@ header {
 h1 {
     font-size: 2.4rem;
     margin-bottom: 12px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15), 1px 1px 3px rgba(255, 255, 255, 0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     font-weight: 600;
-    letter-spacing: 0.5px;
 }
 
 .progress-info {
@@ -190,10 +175,9 @@ h1 {
 }
 
 .start-content h2 {
-    color: #6b8999;
+    color: #1e90ff;
     margin-bottom: 20px;
     font-size: 2rem;
-    text-shadow: 1px 1px 3px rgba(107, 137, 153, 0.2);
 }
 
 .start-content p {
@@ -208,12 +192,12 @@ h1 {
     margin: 30px 0;
     text-align: left;
     display: inline-block;
-    background: #fffcf9;
+    background: #f8f9fa;
     padding: 25px;
     border-radius: 12px;
-    border-left: 5px solid #8ba888;
+    border-left: 5px solid #1e90ff;
     animation: infoSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 5px 15px rgba(139, 168, 136, 0.12);
+    box-shadow: 0 5px 15px rgba(30, 144, 255, 0.1);
 }
 
 @keyframes infoSlideUp {
@@ -230,11 +214,11 @@ h1 {
 .quiz-info li {
     margin: 15px 0;
     font-size: 1.15rem;
-    color: #6b8999;
+    color: #1a5fff;
     animation: listItemStagger 0.6s ease-out;
     animation-fill-mode: both;
     padding: 8px 0;
-    border-bottom: 1px solid rgba(139, 168, 136, 0.15);
+    border-bottom: 1px solid rgba(30, 144, 255, 0.1);
 }
 
 .quiz-info li:last-child {
@@ -261,7 +245,7 @@ h1 {
 .timer-option {
     margin: 25px 0;
     padding: 15px;
-    background: #f5f0eb;
+    background: #f0f4ff;
     border-radius: 10px;
     text-align: left;
     display: inline-block;
@@ -272,7 +256,7 @@ h1 {
     align-items: center;
     gap: 10px;
     font-size: 1.05rem;
-    color: #6b8999;
+    color: #1e90ff;
     cursor: pointer;
     font-weight: 500;
 }
@@ -336,24 +320,24 @@ h1 {
 #question-text {
     font-size: 1.5rem;
     line-height: 1.7;
-    color: #4a4a4a;
+    color: #37474f;
     margin-bottom: 25px;
     padding: 20px;
-    background: #fffcf9;
+    background: #f8f9fa;
     border-radius: 12px;
-    border-left: 5px solid #8ba888;
+    border-left: 5px solid #1e90ff;
     animation: textFocus 4s ease-in-out infinite;
-    box-shadow: 0 5px 15px rgba(139, 168, 136, 0.1);
+    box-shadow: 0 5px 15px rgba(30, 144, 255, 0.08);
 }
 
 @keyframes textFocus {
     0%, 100% { 
-        box-shadow: 0 5px 15px rgba(139, 168, 136, 0.1);
-        border-left-color: #8ba888;
+        box-shadow: 0 5px 15px rgba(30, 144, 255, 0.08);
+        border-left-color: #1e90ff;
     }
     50% { 
-        box-shadow: 0 8px 25px rgba(139, 168, 136, 0.15);
-        border-left-color: #7a9779;
+        box-shadow: 0 8px 25px rgba(30, 144, 255, 0.15);
+        border-left-color: #1a5fff;
     }
 }
 
@@ -365,17 +349,16 @@ h1 {
 
 .option {
     padding: 18px 22px;
-    border: 2px solid #f0e6dc;
+    border: 2px solid #e1f5fe;
     border-radius: 12px;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     font-size: 1.1rem;
     background: #ffffff;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
-    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .option::before {
@@ -385,7 +368,7 @@ h1 {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(212, 163, 115, 0.08), transparent);
+    background: linear-gradient(90deg, transparent, rgba(30, 144, 255, 0.1), transparent);
     transition: left 0.8s;
 }
 
@@ -394,15 +377,15 @@ h1 {
 }
 
 .option:hover {
-    border-color: #d4a373;
-    background: #fffcf9;
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 12px 30px rgba(212, 163, 115, 0.15);
+    border-color: #1e90ff;
+    background: #f0f4ff;
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(30, 144, 255, 0.15);
 }
 
 .option.selected {
-    border-color: #d4a373;
-    background: #fff9f0;
+    border-color: #1e90ff;
+    background: #e3f2fd;
     font-weight: 600;
     animation: selectPulse 0.6s ease-out;
 }
@@ -414,8 +397,8 @@ h1 {
 }
 
 .option.correct {
-    border-color: #8ba888;
-    background: #f0f7f0;
+    border-color: #4caf50;
+    background: #e8f5e9;
     animation: correctBounce 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -426,8 +409,8 @@ h1 {
 }
 
 .option.incorrect {
-    border-color: #d4a094;
-    background: #fff5f3;
+    border-color: #f44336;
+    background: #ffebee;
     animation: incorrectShake 0.7s ease-out;
 }
 
@@ -443,13 +426,13 @@ h1 {
     align-items: center;
     width: 35px;
     height: 35px;
-    background: #6b8999;
+    background: #1e90ff;
     color: white;
     border-radius: 50%;
     margin-right: 18px;
     font-weight: bold;
     animation: letterBounce 4s ease-in-out infinite;
-    box-shadow: 0 4px 8px rgba(107, 137, 153, 0.25);
+    box-shadow: 0 4px 8px rgba(30, 144, 255, 0.3);
 }
 
 @keyframes letterBounce {
@@ -471,33 +454,16 @@ h1 {
 .btn {
     padding: 16px 32px;
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
     font-size: 1.1rem;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     font-weight: 600;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    letter-spacing: 0.3px;
-}
-
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.6s;
-}
-
-.btn:hover::before {
-    left: 100%;
 }
 
 .btn::after {
@@ -519,52 +485,57 @@ h1 {
 }
 
 .btn.primary {
-    background: linear-gradient(135deg, #6b8999 0%, #7a9aa8 100%);
+    background: #1e90ff;
     color: white;
-    box-shadow: 0 8px 24px rgba(107, 137, 153, 0.25);
+    box-shadow: 0 6px 20px rgba(30, 144, 255, 0.3);
 }
 
 .btn.primary:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 12px 35px rgba(107, 137, 153, 0.35);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(30, 144, 255, 0.4);
+    animation: btnGlow 2s ease-in-out infinite;
 }
 
-.btn.primary:active {
-    transform: translateY(-2px) scale(1.02);
+@keyframes btnGlow {
+    0%, 100% { 
+        box-shadow: 0 6px 20px rgba(30, 144, 255, 0.3);
+    }
+    50% { 
+        box-shadow: 0 8px 25px rgba(30, 144, 255, 0.5);
+    }
 }
 
 .btn.secondary {
-    background: linear-gradient(135deg, #f5f0eb 0%, #ebe6e1 100%);
-    color: #5a5a5a;
+    background: #f3f4f6;
+    color: #546e7a;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .btn.secondary:hover {
-    background: linear-gradient(135deg, #ebe6e1 0%, #e0dbd6 100%);
-    transform: translateY(-4px) scale(1.04);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    background: #e5e7eb;
+    transform: translateY(-3px) scale(1.03);
 }
 
 .btn.success {
-    background: linear-gradient(135deg, #8ba888 0%, #9bb799 100%);
-    color: white;
-    box-shadow: 0 8px 24px rgba(139, 168, 136, 0.25);
+    background: #ffeb3b;
+    color: #5d4037;
+    box-shadow: 0 6px 20px rgba(255, 235, 59, 0.3);
 }
 
 .btn.success:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 12px 35px rgba(139, 168, 136, 0.35);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(255, 235, 59, 0.4);
 }
 
-/* 答案与解析部分 - 日式配色 */
+/* 答案与解析部分 - 已修改为淡粉色和亮黄色渐变 */
 .answer-explanation {
     margin-top: 30px;
     padding: 25px;
     border-radius: 12px;
-    background: linear-gradient(135deg, #fff9f0 0%, #f5f0eb 100%);
-    border-left: 5px solid #d4a373;
+    background: linear-gradient(135deg, #ffe6e6 0%, #fff9e6 100%); /* 淡粉色到亮黄色渐变 */
+    border-left: 5px solid #ffb6c1; /* 淡粉色边框 */
     animation: explanationReveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 5px 15px rgba(212, 163, 115, 0.15);
+    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.2); /* 淡粉色阴影 */
     position: relative;
     overflow: hidden;
 }
@@ -576,7 +547,7 @@ h1 {
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #d4a373, #8ba888, #d4a373);
+    background: linear-gradient(90deg, #ffb6c1, #ffd966, #ffb6c1);
 }
 
 @keyframes explanationReveal {
@@ -591,10 +562,10 @@ h1 {
 }
 
 .answer-explanation h3 {
-    color: #6b8999;
+    color: #d2368f; /* 深粉色标题 */
     margin-bottom: 18px;
     font-size: 1.4rem;
-    text-shadow: 1px 1px 2px rgba(107, 137, 153, 0.2);
+    text-shadow: 1px 1px 2px rgba(255, 182, 193, 0.3);
 }
 
 .answer-feedback {
@@ -605,7 +576,7 @@ h1 {
     margin-bottom: 12px;
     line-height: 1.7;
     font-size: 1.1rem;
-    color: #5a5a5a;
+    color: #5d4037; /* 深棕色文字，保证可读性 */
 }
 
 #correct-indicator {
@@ -629,15 +600,15 @@ h1 {
 
 /* 修复：去除背景色和边框，只保留文字颜色 */
 #correct-indicator.correct {
-    color: #8ba888;
-    background-color: transparent;
-    border: none;
+    color: #4caf50; /* 只保留绿色文字 */
+    background-color: transparent; /* 去除背景色 */
+    border: none; /* 去除边框 */
 }
 
 #correct-indicator.incorrect {
-    color: #d4a094;
-    background-color: transparent;
-    border: none;
+    color: #f44336; /* 只保留红色文字 */
+    background-color: transparent; /* 去除背景色 */
+    border: none; /* 去除边框 */
 }
 
 .hidden {
@@ -668,14 +639,14 @@ h1 {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #6b8999 0%, #7a9aa8 100%);
+    background: #1e90ff;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0 auto 30px;
-    box-shadow: 0 15px 30px rgba(107, 137, 153, 0.25);
+    box-shadow: 0 15px 30px rgba(30, 144, 255, 0.3);
     position: relative;
 }
 
@@ -687,7 +658,7 @@ h1 {
     right: -8px;
     bottom: -8px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #6b8999, #8ba888, #d4a373);
+    background: linear-gradient(135deg, #1e90ff, #00bfff, #ffeb3b);
     z-index: -1;
     animation: scoreRotate 6s linear infinite;
     opacity: 0.7;
@@ -763,13 +734,13 @@ h1 {
 .question-nav-panel {
     margin-top: 35px;
     padding: 25px;
-    background: #fffcf9;
+    background: #f8f9fa;
     border-radius: 12px;
-    border-left: 5px solid #8ba888;
+    border-left: 5px solid #1e90ff;
 }
 
 .question-nav-panel h4 {
-    color: #6b8999;
+    color: #1e90ff;
     margin-bottom: 15px;
     font-size: 1.2rem;
 }
@@ -782,7 +753,7 @@ h1 {
 
 .question-nav-btn {
     padding: 12px;
-    border: 2px solid #f0e6dc;
+    border: 2px solid #e1f5fe;
     background: white;
     border-radius: 8px;
     cursor: pointer;
@@ -793,19 +764,19 @@ h1 {
 }
 
 .question-nav-btn:hover {
-    background: #fff9f0;
+    background: #e3f2fd;
     transform: scale(1.05);
 }
 
 .question-nav-btn.active {
-    background: #6b8999;
+    background: #1e90ff;
     color: white;
-    border-color: #6b8999;
+    border-color: #1e90ff;
 }
 
 .question-nav-btn.answered {
-    background: #f0f7f0;
-    border-color: #8ba888;
+    background: #e8f5e9;
+    border-color: #4caf50;
 }
 
 .question-nav-btn.marked::after {
@@ -827,7 +798,7 @@ h1 {
 
 .progress-bar {
     height: 100%;
-    background: linear-gradient(90deg, #6b8999, #7a9aa8);
+    background: linear-gradient(90deg, #1e90ff, #00bfff);
     width: 0%;
     transition: width 0.5s ease;
     border-radius: 4px;
@@ -967,7 +938,7 @@ h1 {
 }
 
 .modal-content h3 {
-    color: #6b8999;
+    color: #1e90ff;
     margin-bottom: 20px;
     font-size: 1.6rem;
 }
@@ -1015,7 +986,7 @@ h1 {
 /* 无障碍功能 - 键盘焦点样式 */
 button:focus,
 .option:focus {
-    outline: 3px solid #d4a373;
+    outline: 3px solid #1e90ff;
     outline-offset: 2px;
 }
 
