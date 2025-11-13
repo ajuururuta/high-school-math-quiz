@@ -65,6 +65,10 @@ function init() {
     submitBtn.addEventListener('click', submitAnswer);
     restartBtn.addEventListener('click', restartQuiz);
     
+    // 初始状态
+    submitBtn.disabled = true;
+    nextBtn.style.display = 'none';
+    
     // 更新进度条
     updateProgressBar();
 }
@@ -86,7 +90,7 @@ function showQuestion(index) {
     answerExplanation.classList.add('hidden');
     
     // 清空选项容器
-    optionsContainer.innerHTML = '';
+    optionsContainer.innerHTML = ''; 
     
     // 创建选项按钮
     question.options.forEach((option, i) => {
@@ -105,7 +109,7 @@ function showQuestion(index) {
         
         optionElement.addEventListener('click', () => selectOption(i));
         optionsContainer.appendChild(optionElement);
-    });
+    }); 
     
     // 更新导航按钮状态
     updateNavigationButtons();
@@ -203,12 +207,21 @@ function updateNavigationButtons() {
         // 最后一题已答，显示完成测验按钮
         nextBtn.style.display = 'none';
         submitBtn.textContent = '完成测验';
+        // 确保只移除原来的 submitAnswer 处理器，再绑定 showResults
         submitBtn.removeEventListener('click', submitAnswer);
+        submitBtn.removeEventListener('click', showResults);
         submitBtn.addEventListener('click', showResults);
+        submitBtn.style.display = 'inline-block';
+        submitBtn.disabled = false;
     } else {
         nextBtn.style.display = 'none';
         submitBtn.style.display = 'inline-block';
         submitBtn.textContent = '提交答案';
+        // 确保 submitBtn 回到提交答案的处理器
+        submitBtn.removeEventListener('click', showResults);
+        // 防止重复绑定 submitAnswer
+        submitBtn.removeEventListener('click', submitAnswer);
+        submitBtn.addEventListener('click', submitAnswer);
     }
 }
 
@@ -260,13 +273,33 @@ function updateProgressBar() {
 
 // 重新开始测验
 function restartQuiz() {
+    // 重置数据
     currentQuestionIndex = 0;
     userAnswers = new Array(questions.length).fill(null);
     score = 0;
     
+    // 恢复界面到起始状态
     resultsScreen.classList.remove('active');
+    quizScreen.classList.remove('active');
     startScreen.classList.add('active');
     
+    // 隐藏答案解析区并清空选项显示
+    answerExplanation.classList.add('hidden');
+    optionsContainer.innerHTML = '';
+    
+    // 恢复 submitBtn 的默认行为：移除 showResults 绑定，确保绑定 submitAnswer
+    submitBtn.removeEventListener('click', showResults);
+    submitBtn.removeEventListener('click', submitAnswer);
+    submitBtn.addEventListener('click', submitAnswer);
+    
+    // 按钮与显示重置
+    submitBtn.disabled = true;
+    submitBtn.style.display = 'inline-block';
+    submitBtn.textContent = '提交答案';
+    nextBtn.style.display = 'none';
+    prevBtn.disabled = true;
+    
+    // 更新进度显示与按钮状态
     updateProgress();
     updateNavigationButtons();
 }
