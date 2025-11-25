@@ -68,16 +68,6 @@ const questions = [
         explanation: "由上题找规律：n面截三维空间得到 (Cn⁰ + Cn¹ + + Cn² + Cn³) 个部分"
     },
     {
-        question: "平面内的两条直线不可以重合，空间内的两条直线不可以重合。（有争议，不计入总分）",
-        options: [
-            "正确",
-            "错误",
-        ],
-        correctIndex: 1,
-        points: 0,
-        explanation: "平面内的两条直线可以重合，空间内的两条直线不可以重合。"
-    },
-    {
         question: "双曲线: x²/a² - y²/b² = 1，焦距为2c，点P在双曲线上，过点P做两条与两渐近线分别垂直的直线，这两条直线与渐近线的交点分别为点A和点B，求∣PA∣×∣PB∣的值。",
         options: [
             "(a²+b²)²/4c²",
@@ -99,5 +89,15 @@ const questions = [
         correctIndex: 2,
         points: 5,
         explanation: "待补"
+    },
+    {
+        question: "平面内的两条直线不可以重合，空间内的两条直线不可以重合。（有争议，不计入总分）",
+        options: [
+            "正确",
+            "错误",
+        ],
+        correctIndex: 1,
+        points: 0,
+        explanation: "平面内的两条直线可以重合，空间内的两条直线不可以重合。"
     }
 ];
