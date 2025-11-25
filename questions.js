@@ -8,7 +8,7 @@ const questions = [
         ],
         correctIndex: 1,
         points: 4,
-        explanation: "直线方程 y = kx (k≠0) 在x、y轴上的截距均为0"    },
+        explanation: "直线方程 y = kx (k≠0) 在x、y轴上的截距均为0."    },
     {
         question: "在平面直角坐标系中，已知点A、点B、点C坐标，射线AD平分∠BAC，以下哪种方法是一般情况下求直线AD方程的最佳方法？",
         options: [
@@ -19,7 +19,7 @@ const questions = [
         ],
         correctIndex: 0,
         points: 5,
-        explanation: "以上方法都没错，其中选项A和D的思路更好，而选项A的方案求出x₀和y₀的关系即为直线AD的方程，过程比选项D方案的过程简洁一些，故认为选项A最佳"
+        explanation: "以上方法都没错，其中选项A和D的思路更好，而选项A的方案求出x₀和y₀的关系即为直线AD的方程，过程比选项D方案的过程简洁一些，故认为选项A最佳。"
     },
     {
         question: "从1到N这N个数中，进行4次随机（不重复）采样，得到x₁，x₂，x₃和x₄这四个数，请选择最合理的估计N的大小的式子。",
@@ -31,7 +31,7 @@ const questions = [
         ],
         correctIndex: 1,
         points: 5,
-        explanation: "《人教B版高中数学必修第二册》§5.2 数学探究活动课“由编号样本估计总数及其模拟”问题的数学语言描述；无论是教材使用的n个区间的平均长度，还是一致最小方差无偏估计，它们的实质都可以分割区间思想理解。"
+        explanation: "《人教B版高中数学必修第二册》§5.2 数学探究活动课“由编号样本估计总数及其模拟”问题的数学语言描述；无论是教材使用的n个区间的平均长度，还是一致最小方差无偏估计，它们的实质都可以用分割区间的思想理解。"
     },
     {
         question: "直线ɭ: Ax + By + C = 0, 直线ɭ和直线ɭ'关于点(x₀,y₀)对称，直线ɭ'的方程为 A(2x₀-x) + B(2y₀-y) + C = 0",
@@ -53,7 +53,7 @@ const questions = [
         ],
         correctIndex: 2,
         points: 1,
-        explanation: "n点截线：Cn⁰ + Cn¹；n线截面：Cn⁰ + Cn¹ + Cn²。在此不详细证明。"
+        explanation: "n点截线：Cn⁰ + Cn¹；n线截面：Cn⁰ + Cn¹ + Cn²。在此暂不详细证明。"
     },
     {
         question: "4个平面切割1个三维空间，最多将该空间切割为几个部分",
@@ -88,7 +88,7 @@ const questions = [
         ],
         correctIndex: 2,
         points: 5,
-        explanation: "待补"
+        explanation: "尚未引入插图，待补充解析。"
     },
     {
         question: "平面内的两条直线不可以重合，空间内的两条直线不可以重合。（有争议，不计入总分）",
